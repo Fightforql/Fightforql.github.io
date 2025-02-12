@@ -475,13 +475,13 @@
       
         jQuery.ajax({
           type: 'GET',
-          url: 'https://api.quotable.io/random',
+          url: 'https://api.adviceslip.com/advice',
           headers: {},
           dataType: 'json',
           success: function(result) {
             var apiText;
             if (result) {
-              var keys = 'content'.split(',');
+              var keys = 'slip,advice'.split(',');
               if (result instanceof Array) {
                 result = result[0];
               }
@@ -499,7 +499,7 @@
           },
           error: function(xhr, status, error) {
             if (error) {
-              console.error('Failed to request https://api.quotable.io/random:', error);
+              console.error('Failed to request https://api.adviceslip.com/advice:', error);
             }
             typing(text);
           }
