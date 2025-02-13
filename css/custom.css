@@ -1,0 +1,95 @@
+/* 自定义代码块样式 */
+pre code {
+  background-color: #2e2e2e; /* 深色背景 */
+  color: #f8f8f2; /* 白色字体 */
+  font-family: 'Courier New', Courier, monospace; /* 设置字体为 macOS 默认的终端字体 */
+  font-size: 20px !important; /* 设置字体大小 */
+  padding: 20px; /* 内边距 */
+  border-radius: 10px !important; /* 圆角边框 */
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); /* 微弱的阴影 */
+  overflow-x: auto; /* 横向滚动 */
+  word-wrap: break-word; /* 自动换行 */
+}
+
+pre code .hljs-keyword {
+  color: #f92672 !important; /* 关键词高亮 */
+}
+
+pre code .hljs-string {
+  color: #a6e22e !important; /* 字符串高亮 */
+}
+
+pre code .hljs-comment {
+  color: #75715e !important; /* 注释高亮 */
+}
+/* 代码块容器，添加 macOS 风格的按钮 */
+.mac-window-code {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #2d2d2d;
+  margin-top: 10px;
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+/* macOS 风格的窗口按钮容器 */
+.mac-window-buttons {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 999;
+  display: flex;
+  justify-content: space-between;
+  width: 60px;
+}
+
+/* 按钮的基本样式 */
+.mac-button {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  margin: 0 3px;
+  cursor: pointer;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+/* 关闭按钮（红色） */
+.mac-button.close {
+  background-color: #ff5f57;
+}
+
+/* 最小化按钮（黄色） */
+.mac-button.minimize {
+  background-color: #ffbd2e;
+}
+
+/* 最大化按钮（绿色） */
+.mac-button.maximize {
+  background-color: #27c93f;
+}
+
+/* Hover 和点击效果 */
+.mac-button:hover {
+  transform: scale(1.2); /* 鼠标悬停时放大 */
+}
+
+.mac-button:active {
+  transform: scale(0.9); /* 点击时缩小 */
+}
+
+/* 改变按钮颜色 */
+.mac-button.close:hover {
+  background-color: #ff1f1a;
+}
+
+.mac-button.minimize:hover {
+  background-color: #ff9d2f;
+}
+
+.mac-button.maximize:hover {
+  background-color: #1dbd36;
+}
