@@ -48,12 +48,12 @@
       star.remove();
     }, 1000); // 星星存在1秒钟后消失
   }
-
+  let count=0;
   // 创建“功德+1”字样并显示
   function createText(x, y) {
     var text = document.createElement('div');
     var messages = ['功德+1', '运气+1', '快乐+1','健康+1','生气-1','烦恼-1','财富+1'];
-    var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    var randomMessage = messages[count%messages.length];
     text.textContent = randomMessage;
     text.classList.add('text'); // 使用CSS类
     text.style.position = 'absolute'; // 使用绝对定位
@@ -64,7 +64,7 @@
     text.style.fontWeight = 'bold';
     text.style.opacity = '1';
     text.style.transition = 'opacity 1s ease-out, transform 1s ease-out'; // 渐变和移动效果
-
+    count=count+1;
     document.body.appendChild(text);
 
     // 文字显示后渐变消失
