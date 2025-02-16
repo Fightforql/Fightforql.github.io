@@ -3,6 +3,8 @@
   starfield.style.position = 'fixed';
   starfield.style.top = '0';
   starfield.style.left = '0';
+  starfield.style.width = '100%'; // 确保宽度
+  starfield.style.height = '100%'; // 确保高度
   starfield.style.pointerEvents = 'none';
   starfield.style.zIndex = '9999';
   document.body.appendChild(starfield);
@@ -15,22 +17,30 @@
     return `rgb(${r},${g},${b})`; // RGB颜色格式
   }
 
-  // 生成星星效果（鼠标移动时）
+  // 生成星星SVG效果（鼠标移动时）
   function createStar(e) {
-    var star = document.createElement('div');
     var size = Math.random() * 10 + 5; // 星星大小
     var x = e.clientX + (Math.random() - 0.5) * 10;
     var y = e.clientY + (Math.random() - 0.5) * 10;
 
+    var star = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    var starPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+    // 正确的五角星路径数据
+    var pathData = 'M2.5,0 L3.09,1.64 L5,1.64 L3.64,2.5 L4.09,4.36 L2.5,3.18 L0.91,4.36 L1.36,2.5 L0,1.64 L1.91,1.64 Z';
+
+    star.setAttribute('width', size);
+    star.setAttribute('height', size);
+    star.setAttribute('viewBox', '0 0 5 5'); // 设置视口大小
     star.style.position = 'absolute';
     star.style.top = `${y}px`;
     star.style.left = `${x}px`;
-    star.style.width = `${size}px`;
-    star.style.height = `${size}px`;
-    star.style.borderRadius = '50%';
-    star.style.backgroundColor = getRandomColor(); // 使用随机颜色
     star.style.opacity = '0.8';
     star.style.animation = 'twinkle 1s ease-out forwards';
+
+    starPath.setAttribute('d', pathData);
+    starPath.setAttribute('fill', getRandomColor()); // 使用随机颜色
+    star.appendChild(starPath);
 
     starfield.appendChild(star);
 
@@ -39,39 +49,45 @@
     }, 1000); // 星星存在1秒钟后消失
   }
 
-  // 创建一个泡泡效果（鼠标点击时）
-  function createBubble(e) {
-    var bubble = document.createElement('div');
-    var size = Math.random() * 20 + 30; // 泡泡的大小，范围从30px到50px
+  // 创建“功德+1”字样并显示
+  function createText(x, y) {
+    var text = document.createElement('div');
+    var messages = ['功德+1', '运气+1', '快乐+1','健康+1','生气-1','烦恼-1','财富+1'];
+    var randomMessage = messages[Math.floor(Math.random() * messages.length)];
+    text.textContent = randomMessage;
+    text.classList.add('text'); // 使用CSS类
+    text.style.position = 'absolute'; // 使用绝对定位
+    text.style.top = `${y}px`;
+    text.style.left = `${x}px`;
+    text.style.color = getRandomColor(); // 使用随机颜色
+    text.style.fontSize = '20px';
+    text.style.fontWeight = 'bold';
+    text.style.opacity = '1';
+    text.style.transition = 'opacity 1s ease-out, transform 1s ease-out'; // 渐变和移动效果
 
-    // 设置泡泡的位置，使其中心与点击位置一致
-    var x = e.clientX - size / 2; // 减去泡泡的一半宽度，使得中心点与点击位置一致
-    var y = e.clientY - size / 2; // 减去泡泡的一半高度，使得中心点与点击位置一致
+    document.body.appendChild(text);
 
-    bubble.style.position = 'absolute';
-    bubble.style.top = `${y}px`;
-    bubble.style.left = `${x}px`;
-    bubble.style.width = `${size}px`;
-    bubble.style.height = `${size}px`;
-    bubble.style.borderRadius = '50%';
-    bubble.style.backgroundColor = 'rgba(0, 123, 255, 0.6)'; // 蓝色，透明度0.6
-    bubble.style.opacity = '1';
-    bubble.style.animation = `bubbleAnimation 2s ease-out forwards`; // 应用泡泡动画
-
-    starfield.appendChild(bubble);
-
+    // 文字显示后渐变消失
     setTimeout(function() {
-      bubble.remove();
-    }, 2000); // 泡泡2秒后移除
+      text.style.opacity = '0';
+      text.style.transform = 'translateY(-40px)'; // 向上移动更远
+    }, 10); // 延迟一下才开始动画
+
+    // 1秒后移除文字
+    setTimeout(function() {
+      text.remove();
+    }, 1000); // 确保文字1秒后消失
   }
+
+  // 鼠标点击时生成“功德+1”
+  document.addEventListener('click', function(e) {
+    var x = e.clientX + window.scrollX; // 加上滚动偏移量
+    var y = e.clientY + window.scrollY; // 加上滚动偏移量
+    createText(x, y); // 在鼠标点击位置显示功德+1
+  });
 
   // 鼠标移动时生成星星
   document.addEventListener('mousemove', function(e) {
     createStar(e);
-  });
-
-  // 鼠标点击时生成一个泡泡
-  document.addEventListener('click', function(e) {
-    createBubble(e);  // 生成单个泡泡效果
   });
 })();
