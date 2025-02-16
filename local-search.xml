@@ -8,7 +8,7 @@
     <link href="/2025/02/07/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/"/>
     <url>/2025/02/07/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/</url>
     
-    <content type="html"><![CDATA[<p>暂</p><pre><code class="language-cpp">#include&lt;iostream&gt;using namespace std;int main()&#123;    return 0;&#125;</code></pre>]]></content>
+    <content type="html"><![CDATA[<p>暂</p><pre><code class="language-javascript">// 这是一个测试代码块function greet(name) &#123;  console.log(&quot;Hello, &quot; + name);&#125;greet(&quot;Hexo&quot;);</code></pre>]]></content>
     
     
     <categories>
