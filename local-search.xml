@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>NR-IQA之对抗攻击方法</title>
+    <link href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/"/>
+    <url>/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/</url>
+    
+    <content type="html"><![CDATA[<p>一.对抗攻击的相关概念<br>1.对抗样本<br>2.对抗攻击目标<br>非目标攻击or目标攻击<br>3.对抗攻击知识<br>根据攻击者掌握信息的多少，分为白盒攻击、灰盒攻击、黑盒攻击<br>白盒攻击假设攻击者已获得关于目标模型的一切信息，如模型结构、参数、梯度、训练过程和训练数据.黑盒攻击则假设攻击者只能访问目标模型的输出，而不能访问其内部参数和梯度信息<br>4.对抗攻击能力<br>诱导性攻击or探索性攻击<br>5.模型的对抗鲁棒性<br>指对抗环境下模型抵御对抗攻击的能力</p><p>二.关于对抗样本存在的解释——为什么可以构造出对抗样本？</p><p>三.</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IQA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IQA之对抗鲁棒性评估</title>
+    <link href="/2025/02/26/IQA%E5%AF%B9%E6%8A%97%E9%B2%81%E6%A3%92%E6%80%A7%E8%AF%84%E4%BC%B0/"/>
+    <url>/2025/02/26/IQA%E5%AF%B9%E6%8A%97%E9%B2%81%E6%A3%92%E6%80%A7%E8%AF%84%E4%BC%B0/</url>
+    
+    <content type="html"><![CDATA[<p>一.基本概念<br>深度学习领域，鲁棒性(robustness)指的是智能系统在受到内外环境中多种不确定因素干扰时，依旧可以保持功能稳定的能力.<br>而对抗鲁棒性(adversarial robustness)[12,33]专指对抗环境下模型抵御对抗攻击的能力<br>以图像分类任务为例，对抗鲁棒性就是指模型能否对对抗样本做出正确分类的能力。</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IQA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>Games105学习札记1</title>
     <link href="/2025/02/20/%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB1/"/>
     <url>/2025/02/20/%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB1/</url>
