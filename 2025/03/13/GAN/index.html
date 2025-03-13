@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          585 words
+          584 words
         
       </span>
     
@@ -339,7 +339,36 @@
 <h1 id="3gan的训练过程"><a class="markdownIt-Anchor" href="#3gan的训练过程"></a> 3.GAN的训练过程：</h1>
 <p>以pytorch代码为例：(判别器选择了简单的MLP)</p>
 <h3 id="首先是一个很简单的判别器通过简单的mlp输出01之间的一个概率作为outputstargets即为真实标签交叉熵损失函数一般广泛应用于分类问题中"><a class="markdownIt-Anchor" href="#首先是一个很简单的判别器通过简单的mlp输出01之间的一个概率作为outputstargets即为真实标签交叉熵损失函数一般广泛应用于分类问题中"></a> 首先是一个很简单的判别器，通过简单的MLP输出（0，1)之间的一个概率作为outputs，targets即为真实标签，交叉熵损失函数一般广泛应用于分类问题中</h3>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-comment"># 判别器</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Discriminator</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 调用父类的构造函数，初始化父类</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        <span class="hljs-comment"># 定义神经网络</span><br>        <span class="hljs-variable language_">self</span>.model = nn.Sequential(<br>        	nn.Linear(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>),<br>        	nn.Sigmoid(),<br>        	nn.Linear(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>), <br>        	nn.Sigmoid()<br>        )<br>        <span class="hljs-comment"># 创建损失函数</span><br>        <span class="hljs-variable language_">self</span>.loss_function = nn.MSELoss()<br>        <span class="hljs-comment"># 创建优化器，随机梯度下降</span><br>        <span class="hljs-variable language_">self</span>.optimiser = torch.optim.SGD(<span class="hljs-variable language_">self</span>.parameters(), lr=<span class="hljs-number">0.01</span>)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, inputs</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.model(inputs)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>(<span class="hljs-params">self, inputs, targets</span>):<br>        <span class="hljs-comment"># 计算网络的输出值</span><br>        outputs = <span class="hljs-variable language_">self</span>.forward(inputs)<br>        loss = <span class="hljs-variable language_">self</span>.loss_function(outputs, targets)<br>        <span class="hljs-comment"># 反向传播</span><br>        <span class="hljs-variable language_">self</span>.optimiser.zero_grad()<br>        loss.backward()<br>        <span class="hljs-variable language_">self</span>.optimiser.step()<br><br></code></pre></td></tr></table></figure>
+<div class="code-wrapper"><pre><code class="hljs python">
+<span class="hljs-comment"># 判别器</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Discriminator</span>(nn.Module):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):
+        <span class="hljs-comment"># 调用父类的构造函数，初始化父类</span>
+        <span class="hljs-built_in">super</span>().__init__()
+        <span class="hljs-comment"># 定义神经网络</span>
+        <span class="hljs-variable language_">self</span>.model = nn.Sequential(
+        	nn.Linear(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>),
+        	nn.Sigmoid(),
+        	nn.Linear(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>), 
+        	nn.Sigmoid()
+        )
+        <span class="hljs-comment"># 创建损失函数</span>
+        <span class="hljs-variable language_">self</span>.loss_function = nn.MSELoss()
+        <span class="hljs-comment"># 创建优化器，随机梯度下降</span>
+        <span class="hljs-variable language_">self</span>.optimiser = torch.optim.SGD(<span class="hljs-variable language_">self</span>.parameters(), lr=<span class="hljs-number">0.01</span>)
+        
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, inputs</span>):
+        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.model(inputs)
+        
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>(<span class="hljs-params">self, inputs, targets</span>):
+        <span class="hljs-comment"># 计算网络的输出值</span>
+        outputs = <span class="hljs-variable language_">self</span>.forward(inputs)
+        loss = <span class="hljs-variable language_">self</span>.loss_function(outputs, targets)
+        <span class="hljs-comment"># 反向传播</span>
+        <span class="hljs-variable language_">self</span>.optimiser.zero_grad()
+        loss.backward()
+        <span class="hljs-variable language_">self</span>.optimiser.step()
+</code></pre></div>
 <h3 id="然后是生成器"><a class="markdownIt-Anchor" href="#然后是生成器"></a> 然后是生成器</h3>
 
                 
