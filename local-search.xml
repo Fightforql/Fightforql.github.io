@@ -4,6 +4,56 @@
   
   
   <entry>
+    <title>GAN model学习</title>
+    <link href="/2025/03/13/GAN/"/>
+    <url>/2025/03/13/GAN/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1gan的目标"><a class="markdownIt-Anchor" href="#1gan的目标"></a> 1.GAN的目标</h1><h2 id="gan是生成模型的一种"><a class="markdownIt-Anchor" href="#gan是生成模型的一种"></a> GAN是生成模型的一种</h2><h3 id="区分生成模型与判别模型"><a class="markdownIt-Anchor" href="#区分生成模型与判别模型"></a> 区分生成模型与判别模型：</h3><p>生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据；<br />判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。</p><p>假定输入x,输出y 判别模型相当于是在估计条件概率分布<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(y|x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>,生成模型则是在估计联合概率分布<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p><p>举个例子，输入手写数字图片集，判别模型学习的目标是对于给出的图片，可以判断是哪个数字；而生成模型的目标是生成新的数字图片</p><h2 id="gan的目标"><a class="markdownIt-Anchor" href="#gan的目标"></a> GAN的目标</h2><h1 id="2gan生成对抗网络的思想"><a class="markdownIt-Anchor" href="#2gan生成对抗网络的思想"></a> 2.GAN（生成对抗网络）的思想：</h1><h2 id="a-由两个模型组成"><a class="markdownIt-Anchor" href="#a-由两个模型组成"></a> a. 由两个模型组成</h2><p>生成器G(Generator)<br />鉴别器D(Discriminator)</p><h2 id="b对抗思想"><a class="markdownIt-Anchor" href="#b对抗思想"></a> b.对抗思想</h2><p>生成器努力生成能够欺骗鉴别器的样本，而鉴别器努力识别生成的样本是真是假(即是来自数据集还是有生成器生成的),<br />我们希望达到的目标是：鉴别器无法区分生成器生成的样本到底是真是假</p><h2 id="c生成器和鉴别器之间的关系是一种博弈"><a class="markdownIt-Anchor" href="#c生成器和鉴别器之间的关系是一种博弈"></a> c.生成器和鉴别器之间的关系是一种博弈</h2><h3 id="i零和博弈"><a class="markdownIt-Anchor" href="#i零和博弈"></a> i.零和博弈</h3><h3 id="ii纳什均衡"><a class="markdownIt-Anchor" href="#ii纳什均衡"></a> ii.纳什均衡</h3><h1 id="3gan的训练过程"><a class="markdownIt-Anchor" href="#3gan的训练过程"></a> 3.GAN的训练过程：</h1><p>以pytorch代码为例：(判别器选择了简单的MLP)</p><h3 id="首先是一个很简单的判别器通过简单的mlp输出01之间的一个概率作为outputstargets即为真实标签交叉熵损失函数一般广泛应用于分类问题中"><a class="markdownIt-Anchor" href="#首先是一个很简单的判别器通过简单的mlp输出01之间的一个概率作为outputstargets即为真实标签交叉熵损失函数一般广泛应用于分类问题中"></a> 首先是一个很简单的判别器，通过简单的MLP输出（0，1)之间的一个概率作为outputs，targets即为真实标签，交叉熵损失函数一般广泛应用于分类问题中</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><code class="hljs python"><br><span class="hljs-comment"># 判别器</span><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Discriminator</span>(nn.Module):<br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):<br>        <span class="hljs-comment"># 调用父类的构造函数，初始化父类</span><br>        <span class="hljs-built_in">super</span>().__init__()<br>        <span class="hljs-comment"># 定义神经网络</span><br>        <span class="hljs-variable language_">self</span>.model = nn.Sequential(<br>        nn.Linear(<span class="hljs-number">4</span>, <span class="hljs-number">3</span>),<br>        nn.Sigmoid(),<br>        nn.Linear(<span class="hljs-number">3</span>, <span class="hljs-number">1</span>), <br>        nn.Sigmoid()<br>        )<br>        <span class="hljs-comment"># 创建损失函数</span><br>        <span class="hljs-variable language_">self</span>.loss_function = nn.MSELoss()<br>        <span class="hljs-comment"># 创建优化器，随机梯度下降</span><br>        <span class="hljs-variable language_">self</span>.optimiser = torch.optim.SGD(<span class="hljs-variable language_">self</span>.parameters(), lr=<span class="hljs-number">0.01</span>)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, inputs</span>):<br>        <span class="hljs-keyword">return</span> <span class="hljs-variable language_">self</span>.model(inputs)<br>        <br>    <span class="hljs-keyword">def</span> <span class="hljs-title function_">train</span>(<span class="hljs-params">self, inputs, targets</span>):<br>        <span class="hljs-comment"># 计算网络的输出值</span><br>        outputs = <span class="hljs-variable language_">self</span>.forward(inputs)<br>        loss = <span class="hljs-variable language_">self</span>.loss_function(outputs, targets)<br>        <span class="hljs-comment"># 反向传播</span><br>        <span class="hljs-variable language_">self</span>.optimiser.zero_grad()<br>        loss.backward()<br>        <span class="hljs-variable language_">self</span>.optimiser.step()<br><br></code></pre></td></tr></table></figure><h3 id="然后是生成器"><a class="markdownIt-Anchor" href="#然后是生成器"></a> 然后是生成器</h3>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>GAN</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
+    <title>IQA之入门必备知识</title>
+    <link href="/2025/02/26/IQA0/"/>
+    <url>/2025/02/26/IQA0/</url>
+    
+    <content type="html"><![CDATA[<h1 id="iqa图像质量评估"><a class="markdownIt-Anchor" href="#iqa图像质量评估"></a> IQA——图像质量评估</h1><p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义</p><h2 id="1图像质量评估"><a class="markdownIt-Anchor" href="#1图像质量评估"></a> 1.图像质量评估</h2><p>对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价</p><h2 id="2分类"><a class="markdownIt-Anchor" href="#2分类"></a> 2.分类</h2><p>根据有没有参与这一角度，分为主观评价和客观评价</p><h2 id="3主观评价方法"><a class="markdownIt-Anchor" href="#3主观评价方法"></a> 3.主观评价方法</h2><h3 id="i绝对评价"><a class="markdownIt-Anchor" href="#i绝对评价"></a> i.绝对评价</h3><p>评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值</p><h3 id="ii相对评价"><a class="markdownIt-Anchor" href="#ii相对评价"></a> ii.相对评价</h3><p>评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值</p><h2 id="4客观评价方法"><a class="markdownIt-Anchor" href="#4客观评价方法"></a> 4.客观评价方法</h2><p>脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.<br />分为全参考（FR）、半参考（RR）、无参考（NR）</p>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>IQA</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>NR-IQA之对抗攻击方法</title>
     <link href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/"/>
     <url>/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/</url>
@@ -34,31 +84,6 @@
     <url>/2025/02/26/IQA%E5%AF%B9%E6%8A%97%E9%B2%81%E6%A3%92%E6%80%A7%E8%AF%84%E4%BC%B0/</url>
     
     <content type="html"><![CDATA[<h1 id="一基本概念"><a class="markdownIt-Anchor" href="#一基本概念"></a> 一.基本概念</h1><p>深度学习领域，鲁棒性(robustness)指的是智能系统在受到内外环境中多种不确定因素干扰时，依旧可以保持功能稳定的能力.</p><p>而对抗鲁棒性(adversarial robustness)专指对抗环境下模型抵御对抗攻击的能力</p><p>以图像分类任务为例，对抗鲁棒性就是指模型能否对对抗样本做出正确分类的能力。</p>]]></content>
-    
-    
-    <categories>
-      
-      <category>科研</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>IQA</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>IQA之入门必备知识</title>
-    <link href="/2025/02/26/IQA0/"/>
-    <url>/2025/02/26/IQA0/</url>
-    
-    <content type="html"><![CDATA[<h1 id="iqa图像质量评估"><a class="markdownIt-Anchor" href="#iqa图像质量评估"></a> IQA——图像质量评估</h1><p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义</p><h2 id="1图像质量评估"><a class="markdownIt-Anchor" href="#1图像质量评估"></a> 1.图像质量评估</h2><p>对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价</p><h2 id="2分类"><a class="markdownIt-Anchor" href="#2分类"></a> 2.分类</h2><p>根据有没有参与这一角度，分为主观评价和客观评价</p><h2 id="3主观评价方法"><a class="markdownIt-Anchor" href="#3主观评价方法"></a> 3.主观评价方法</h2><h3 id="i绝对评价"><a class="markdownIt-Anchor" href="#i绝对评价"></a> i.绝对评价</h3><p>评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值</p><h3 id="ii相对评价"><a class="markdownIt-Anchor" href="#ii相对评价"></a> ii.相对评价</h3><p>评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值</p><h2 id="4客观评价方法"><a class="markdownIt-Anchor" href="#4客观评价方法"></a> 4.客观评价方法</h2><p>脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.<br />分为全参考（FR）、半参考（RR）、无参考（NR）</p>]]></content>
     
     
     <categories>
