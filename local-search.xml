@@ -4,6 +4,31 @@
   
   
   <entry>
+    <title>VAE</title>
+    <link href="/2025/03/27/VAE/"/>
+    <url>/2025/03/27/VAE/</url>
+    
+    <content type="html"><![CDATA[<h1 id="1先来看ae自动编码器"><a class="markdownIt-Anchor" href="#1先来看ae自动编码器"></a> 1.先来看AE（自动编码器）</h1><h2 id="本质是无监督学习主要就是一个encoder和decoder"><a class="markdownIt-Anchor" href="#本质是无监督学习主要就是一个encoder和decoder"></a> 本质是无监督学习，主要就是一个Encoder和Decoder</h2><h3 id="iencoder"><a class="markdownIt-Anchor" href="#iencoder"></a> i.Encoder</h3><p>将高维数据映射到低维空间，实际上起一个降维的作用,用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>g</mi><mi>θ</mi></msub></mrow><annotation encoding="application/x-tex">g_\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>表示Encoder的网络，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi><mo>=</mo><msub><mi>g</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">z=g_\theta(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示高维数据x经过网络之后产生低维的z</p><h3 id="iidecoder"><a class="markdownIt-Anchor" href="#iidecoder"></a> ii.Decoder</h3><p>从降维后的数据还原到原始数据,用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>λ</mi></msub></mrow><annotation encoding="application/x-tex">f_\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>表示Encoder的网络,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>x</mi><mrow><mi>n</mi><mi>e</mi><mi>w</mi></mrow></msup><mo>=</mo><msub><mi>f</mi><mi>λ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^{new}=f_\lambda(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></p><p>此外，还需要一个loss函数，可以简单定义为x^new与x的距离(L2范数)：<br />$ L(\theta,\lambda)=\frac{1}{n}\sum_{i=1}<sup>n(x</sup>i-x<sup>{new(i)})</sup>2$</p><h4 id="由此可见ae可以完成一些降维-压缩-特征提取等任务"><a class="markdownIt-Anchor" href="#由此可见ae可以完成一些降维-压缩-特征提取等任务"></a> 由此可见，AE可以完成一些降维、压缩、特征提取等任务</h4><h3 id="iii代码示例"><a class="markdownIt-Anchor" href="#iii代码示例"></a> iii.代码示例</h3><h4 id="ae-model定义"><a class="markdownIt-Anchor" href="#ae-model定义"></a> AE model定义</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 定义 Autoencoder 模型 用nn.Module作为父类，方便用优化器追踪梯度</span><span class="hljs-keyword">class</span> <span class="hljs-title class_">Autoencoder</span>(nn.Module):    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, input_size, hidden_size</span>):        <span class="hljs-built_in">super</span>(Autoencoder, <span class="hljs-variable language_">self</span>).__init__()                <span class="hljs-comment"># 编码器</span>        <span class="hljs-variable language_">self</span>.encoder = nn.Sequential(            nn.Linear(input_size, hidden_size),            nn.ReLU()  <span class="hljs-comment"># 激活函数</span>        )        <span class="hljs-comment">#nn.linear是网络中的全连接层，第一个参数代表的是输入的二维张量的第二个size，相当于上一层神经元个数，第二个参数则是下一层神经元个数</span>        <span class="hljs-comment">#将每一个input_size维数的高维向量转化维hidden_size的低维向量</span>                <span class="hljs-comment"># 解码器</span>        <span class="hljs-variable language_">self</span>.decoder = nn.Sequential(            nn.Linear(hidden_size, input_size),            nn.Sigmoid()  <span class="hljs-comment"># 将输出范围限定在 [0, 1]</span>        )        <span class="hljs-comment">#这里要恢复到原始维数，所以参数是倒过来的</span>        <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):        encoded = <span class="hljs-variable language_">self</span>.encoder(x)        decoded = <span class="hljs-variable language_">self</span>.decoder(encoded)        <span class="hljs-keyword">return</span> decoded</code></pre></div><h4 id="加载数据定义优化器-损失函数"><a class="markdownIt-Anchor" href="#加载数据定义优化器-损失函数"></a> 加载数据，定义优化器、损失函数</h4><div class="code-wrapper"><pre><code class="hljs python">X = np.random.rand(<span class="hljs-number">1000</span>, <span class="hljs-number">64</span>)  <span class="hljs-comment"># 1000 个样本，每个样本有 64 维光谱特征</span>X = torch.tensor(X, dtype=torch.float32)<span class="hljs-comment"># 创建数据加载器</span>dataset = TensorDataset(X, X)  <span class="hljs-comment"># 输入数据与输出数据相同</span>dataloader = DataLoader(dataset, batch_size=<span class="hljs-number">32</span>, shuffle=<span class="hljs-literal">True</span>)<span class="hljs-comment"># 定义模型、优化器和损失函数</span>input_size = <span class="hljs-number">64</span>hidden_size = <span class="hljs-number">32</span>  <span class="hljs-comment"># 压缩到 32 维</span>autoencoder = Autoencoder(input_size=input_size, hidden_size=hidden_size)optimizer = optim.Adam(autoencoder.parameters(), lr=<span class="hljs-number">0.001</span>)<span class="hljs-comment">#我们定义的model用了nn.Module的基类，通过.parameters就可以访问所有要训练的参数</span><span class="hljs-comment">#包括encoder和decoder二者的参数，因为二者是要一起训练的</span>criterion = nn.MSELoss()  <span class="hljs-comment"># 损失函数为均方误差</span></code></pre></div><h4 id="train"><a class="markdownIt-Anchor" href="#train"></a> train</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 训练 Autoencoder 模型</span>num_epochs = <span class="hljs-number">50</span><span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_epochs):    <span class="hljs-keyword">for</span> data, target <span class="hljs-keyword">in</span> dataloader:        optimizer.zero_grad() <span class="hljs-comment">#清空梯度</span>        output = autoencoder(data) <span class="hljs-comment">#前向传播</span>        loss = criterion(output, target)        <span class="hljs-comment">#target即为原始数据</span>        loss.backward()        <span class="hljs-comment">#反向传播</span>        optimizer.step()        <span class="hljs-comment">#step 梯度下降</span>        <span class="hljs-keyword">if</span> epoch % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>:        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Epoch <span class="hljs-subst">&#123;epoch&#125;</span>, Loss: <span class="hljs-subst">&#123;loss.item()&#125;</span>&#x27;</span>)</code></pre></div><h4 id="test"><a class="markdownIt-Anchor" href="#test"></a> test</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 使用训练好的模型进行降维和重构</span>encoded_data = autoencoder.encoder(X).detach().numpy()decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()</code></pre></div><h1 id="2vae变分自动编码器"><a class="markdownIt-Anchor" href="#2vae变分自动编码器"></a> 2.VAE（变分自动编码器）</h1><h2 id="准备知识"><a class="markdownIt-Anchor" href="#准备知识"></a> 准备知识</h2><h3 id="1潜在变量"><a class="markdownIt-Anchor" href="#1潜在变量"></a> （1）潜在变量</h3><h3 id="2极大似然估计"><a class="markdownIt-Anchor" href="#2极大似然估计"></a> （2）极大似然估计</h3><h3 id="3kl散度"><a class="markdownIt-Anchor" href="#3kl散度"></a> （3）KL散度</h3><h2 id="vae主要思想"><a class="markdownIt-Anchor" href="#vae主要思想"></a> VAE主要思想</h2><h2 id="vae的损失函数推导"><a class="markdownIt-Anchor" href="#vae的损失函数推导"></a> VAE的损失函数推导</h2><h2 id="采样重参数技巧"><a class="markdownIt-Anchor" href="#采样重参数技巧"></a> 采样：重参数技巧</h2><h2 id="代码实例"><a class="markdownIt-Anchor" href="#代码实例"></a> 代码实例</h2>]]></content>
+    
+    
+    <categories>
+      
+      <category>科研</category>
+      
+    </categories>
+    
+    
+    <tags>
+      
+      <tag>VAE</tag>
+      
+    </tags>
+    
+  </entry>
+  
+  
+  
+  <entry>
     <title>GAN model学习</title>
     <link href="/2025/03/13/GAN/"/>
     <url>/2025/03/13/GAN/</url>
@@ -29,11 +54,11 @@
   
   
   <entry>
-    <title>IQA之入门必备知识</title>
-    <link href="/2025/02/26/IQA0/"/>
-    <url>/2025/02/26/IQA0/</url>
+    <title>NR-IQA之对抗攻击方法</title>
+    <link href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/"/>
+    <url>/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/</url>
     
-    <content type="html"><![CDATA[<h1 id="iqa图像质量评估"><a class="markdownIt-Anchor" href="#iqa图像质量评估"></a> IQA——图像质量评估</h1><p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义</p><h2 id="1图像质量评估"><a class="markdownIt-Anchor" href="#1图像质量评估"></a> 1.图像质量评估</h2><p>对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价</p><h2 id="2分类"><a class="markdownIt-Anchor" href="#2分类"></a> 2.分类</h2><p>根据有没有参与这一角度，分为主观评价和客观评价</p><h2 id="3主观评价方法"><a class="markdownIt-Anchor" href="#3主观评价方法"></a> 3.主观评价方法</h2><h3 id="i绝对评价"><a class="markdownIt-Anchor" href="#i绝对评价"></a> i.绝对评价</h3><p>评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值</p><h3 id="ii相对评价"><a class="markdownIt-Anchor" href="#ii相对评价"></a> ii.相对评价</h3><p>评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值</p><h2 id="4客观评价方法"><a class="markdownIt-Anchor" href="#4客观评价方法"></a> 4.客观评价方法</h2><p>脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.<br />分为全参考（FR）、半参考（RR）、无参考（NR）</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="一对抗攻击的相关概念"><a class="markdownIt-Anchor" href="#一对抗攻击的相关概念"></a> 一.对抗攻击的相关概念</h1><h2 id="1对抗样本"><a class="markdownIt-Anchor" href="#1对抗样本"></a> 1.对抗样本</h2><h2 id="2对抗攻击目标"><a class="markdownIt-Anchor" href="#2对抗攻击目标"></a> 2.对抗攻击目标</h2><p>非目标攻击or目标攻击</p><h2 id="3对抗攻击知识"><a class="markdownIt-Anchor" href="#3对抗攻击知识"></a> 3.对抗攻击知识</h2><p>根据攻击者掌握信息的多少，分为白盒攻击、灰盒攻击、黑盒攻击</p><p>白盒攻击假设攻击者已获得关于目标模型的一切信息，如模型结构、参数、梯度、训练过程和训练数据.</p><p>黑盒攻击则假设攻击者只能访问目标模型的输出，而不能访问其内部参数和梯度信息</p><h2 id="4对抗攻击能力"><a class="markdownIt-Anchor" href="#4对抗攻击能力"></a> 4.对抗攻击能力</h2><p>诱导性攻击or探索性攻击</p><h2 id="5模型的对抗鲁棒性"><a class="markdownIt-Anchor" href="#5模型的对抗鲁棒性"></a> 5.模型的对抗鲁棒性</h2><p>指对抗环境下模型抵御对抗攻击的能力</p><h1 id="二关于对抗样本存在的解释为什么可以构造出对抗样本"><a class="markdownIt-Anchor" href="#二关于对抗样本存在的解释为什么可以构造出对抗样本"></a> 二.关于对抗样本存在的解释——为什么可以构造出对抗样本？</h1><h1 id="三不同攻击方法"><a class="markdownIt-Anchor" href="#三不同攻击方法"></a> 三.不同攻击方法</h1><h2 id="1基于梯度的白盒攻击"><a class="markdownIt-Anchor" href="#1基于梯度的白盒攻击"></a> 1.基于梯度的白盒攻击</h2><h2 id="2基于优化的白盒攻击"><a class="markdownIt-Anchor" href="#2基于优化的白盒攻击"></a> 2.基于优化的白盒攻击</h2><h2 id="3基于迁移的黑盒攻击"><a class="markdownIt-Anchor" href="#3基于迁移的黑盒攻击"></a> 3.基于迁移的黑盒攻击</h2><h2 id="4基于查询的黑盒攻击"><a class="markdownIt-Anchor" href="#4基于查询的黑盒攻击"></a> 4.基于查询的黑盒攻击</h2>]]></content>
     
     
     <categories>
@@ -54,11 +79,11 @@
   
   
   <entry>
-    <title>NR-IQA之对抗攻击方法</title>
-    <link href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/"/>
-    <url>/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/</url>
+    <title>IQA之入门必备知识</title>
+    <link href="/2025/02/26/IQA0/"/>
+    <url>/2025/02/26/IQA0/</url>
     
-    <content type="html"><![CDATA[<h1 id="一对抗攻击的相关概念"><a class="markdownIt-Anchor" href="#一对抗攻击的相关概念"></a> 一.对抗攻击的相关概念</h1><h2 id="1对抗样本"><a class="markdownIt-Anchor" href="#1对抗样本"></a> 1.对抗样本</h2><h2 id="2对抗攻击目标"><a class="markdownIt-Anchor" href="#2对抗攻击目标"></a> 2.对抗攻击目标</h2><p>非目标攻击or目标攻击</p><h2 id="3对抗攻击知识"><a class="markdownIt-Anchor" href="#3对抗攻击知识"></a> 3.对抗攻击知识</h2><p>根据攻击者掌握信息的多少，分为白盒攻击、灰盒攻击、黑盒攻击</p><p>白盒攻击假设攻击者已获得关于目标模型的一切信息，如模型结构、参数、梯度、训练过程和训练数据.</p><p>黑盒攻击则假设攻击者只能访问目标模型的输出，而不能访问其内部参数和梯度信息</p><h2 id="4对抗攻击能力"><a class="markdownIt-Anchor" href="#4对抗攻击能力"></a> 4.对抗攻击能力</h2><p>诱导性攻击or探索性攻击</p><h2 id="5模型的对抗鲁棒性"><a class="markdownIt-Anchor" href="#5模型的对抗鲁棒性"></a> 5.模型的对抗鲁棒性</h2><p>指对抗环境下模型抵御对抗攻击的能力</p><h1 id="二关于对抗样本存在的解释为什么可以构造出对抗样本"><a class="markdownIt-Anchor" href="#二关于对抗样本存在的解释为什么可以构造出对抗样本"></a> 二.关于对抗样本存在的解释——为什么可以构造出对抗样本？</h1><h1 id="三不同攻击方法"><a class="markdownIt-Anchor" href="#三不同攻击方法"></a> 三.不同攻击方法</h1><h2 id="1基于梯度的白盒攻击"><a class="markdownIt-Anchor" href="#1基于梯度的白盒攻击"></a> 1.基于梯度的白盒攻击</h2><h2 id="2基于优化的白盒攻击"><a class="markdownIt-Anchor" href="#2基于优化的白盒攻击"></a> 2.基于优化的白盒攻击</h2><h2 id="3基于迁移的黑盒攻击"><a class="markdownIt-Anchor" href="#3基于迁移的黑盒攻击"></a> 3.基于迁移的黑盒攻击</h2><h2 id="4基于查询的黑盒攻击"><a class="markdownIt-Anchor" href="#4基于查询的黑盒攻击"></a> 4.基于查询的黑盒攻击</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="iqa图像质量评估"><a class="markdownIt-Anchor" href="#iqa图像质量评估"></a> IQA——图像质量评估</h1><p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义</p><h2 id="1图像质量评估"><a class="markdownIt-Anchor" href="#1图像质量评估"></a> 1.图像质量评估</h2><p>对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价</p><h2 id="2分类"><a class="markdownIt-Anchor" href="#2分类"></a> 2.分类</h2><p>根据有没有参与这一角度，分为主观评价和客观评价</p><h2 id="3主观评价方法"><a class="markdownIt-Anchor" href="#3主观评价方法"></a> 3.主观评价方法</h2><h3 id="i绝对评价"><a class="markdownIt-Anchor" href="#i绝对评价"></a> i.绝对评价</h3><p>评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值</p><h3 id="ii相对评价"><a class="markdownIt-Anchor" href="#ii相对评价"></a> ii.相对评价</h3><p>评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值</p><h2 id="4客观评价方法"><a class="markdownIt-Anchor" href="#4客观评价方法"></a> 4.客观评价方法</h2><p>脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.<br />分为全参考（FR）、半参考（RR）、无参考（NR）</p>]]></content>
     
     
     <categories>
@@ -96,31 +121,6 @@
     <tags>
       
       <tag>IQA</tag>
-      
-    </tags>
-    
-  </entry>
-  
-  
-  
-  <entry>
-    <title>Games105学习札记1</title>
-    <link href="/2025/02/20/%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB1/"/>
-    <url>/2025/02/20/%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB1/</url>
-    
-    <content type="html"><![CDATA[]]></content>
-    
-    
-    <categories>
-      
-      <category>课程内容</category>
-      
-    </categories>
-    
-    
-    <tags>
-      
-      <tag>Games105</tag>
       
     </tags>
     

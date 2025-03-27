@@ -19,24 +19,24 @@
   <meta name="author" content="lsy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="test">
+    <meta name="description" content="1.先来看AE（自动编码器）  本质是无监督学习，主要就是一个Encoder和Decoder  i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用gθg_\thetagθ​表示Encoder的网络，z&#x3D;gθ(x)z&#x3D;g_\theta(x)z&#x3D;gθ​(x)表示高维数据x经过网络之后产生低维的z  ii.Decoder 从降维后的数据还原到原始数据,用fλf_\lambdafλ">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Games105学习札记1">
-<meta property="og:url" content="https://fightforql.github.io/2025/02/20/%E8%A7%92%E8%89%B2%E5%8A%A8%E7%94%BB1/index.html">
+<meta property="og:title" content="VAE">
+<meta property="og:url" content="https://fightforql.github.io/2025/03/27/VAE/index.html">
 <meta property="og:site_name" content="lsylalala">
-<meta property="og:description" content="test">
+<meta property="og:description" content="1.先来看AE（自动编码器）  本质是无监督学习，主要就是一个Encoder和Decoder  i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用gθg_\thetagθ​表示Encoder的网络，z&#x3D;gθ(x)z&#x3D;g_\theta(x)z&#x3D;gθ​(x)表示高维数据x经过网络之后产生低维的z  ii.Decoder 从降维后的数据还原到原始数据,用fλf_\lambdafλ">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2025-02-20T08:20:29.601Z">
-<meta property="article:modified_time" content="2025-02-20T08:27:34.376Z">
+<meta property="article:published_time" content="2025-03-27T05:28:00.000Z">
+<meta property="article:modified_time" content="2025-03-27T14:56:24.827Z">
 <meta property="article:author" content="lsy">
-<meta property="article:tag" content="Games105">
+<meta property="article:tag" content="VAE">
 <meta name="twitter:card" content="summary_large_image">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>Games105学习札记1 - lsylalala</title>
+  <title>VAE - lsylalala</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -217,7 +217,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="Games105学习札记1"></span>
+            <span id="subtitle" data-typed-text="VAE"></span>
           
         </div>
 
@@ -233,8 +233,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2025-02-20 16:20" pubdate>
-          February 20, 2025 pm
+        <time datetime="2025-03-27 13:28" pubdate>
+          March 27, 2025 pm
         </time>
       </span>
     
@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          0 words
+          678 words
         
       </span>
     
@@ -256,7 +256,7 @@
         
         
         
-          1 mins
+          6 mins
         
       </span>
     
@@ -313,12 +313,96 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">Games105学习札记1</h1>
+            <h1 id="seo-header">VAE</h1>
             
             
               <div class="markdown-body">
                 
-                
+                <h1 id="1先来看ae自动编码器"><a class="markdownIt-Anchor" href="#1先来看ae自动编码器"></a> 1.先来看AE（自动编码器）</h1>
+<h2 id="本质是无监督学习主要就是一个encoder和decoder"><a class="markdownIt-Anchor" href="#本质是无监督学习主要就是一个encoder和decoder"></a> 本质是无监督学习，主要就是一个Encoder和Decoder</h2>
+<h3 id="iencoder"><a class="markdownIt-Anchor" href="#iencoder"></a> i.Encoder</h3>
+<p>将高维数据映射到低维空间，实际上起一个降维的作用,用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>g</mi><mi>θ</mi></msub></mrow><annotation encoding="application/x-tex">g_\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>表示Encoder的网络，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>z</mi><mo>=</mo><msub><mi>g</mi><mi>θ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">z=g_\theta(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.04398em;">z</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.03588em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight" style="margin-right:0.02778em;">θ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>表示高维数据x经过网络之后产生低维的z</p>
+<h3 id="iidecoder"><a class="markdownIt-Anchor" href="#iidecoder"></a> ii.Decoder</h3>
+<p>从降维后的数据还原到原始数据,用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mi>λ</mi></msub></mrow><annotation encoding="application/x-tex">f_\lambda</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>表示Encoder的网络,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi>x</mi><mrow><mi>n</mi><mi>e</mi><mi>w</mi></mrow></msup><mo>=</mo><msub><mi>f</mi><mi>λ</mi></msub><mo stretchy="false">(</mo><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">x^{new}=f_\lambda(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.664392em;vertical-align:0em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span></span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.33610799999999996em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">λ</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span></p>
+<p>此外，还需要一个loss函数，可以简单定义为x^new与x的距离(L2范数)：<br />
+$ L(\theta,\lambda)=\frac{1}{n}\sum_{i=1}<sup>n(x</sup>i-x<sup>{new(i)})</sup>2$</p>
+<h4 id="由此可见ae可以完成一些降维-压缩-特征提取等任务"><a class="markdownIt-Anchor" href="#由此可见ae可以完成一些降维-压缩-特征提取等任务"></a> 由此可见，AE可以完成一些降维、压缩、特征提取等任务</h4>
+<h3 id="iii代码示例"><a class="markdownIt-Anchor" href="#iii代码示例"></a> iii.代码示例</h3>
+<h4 id="ae-model定义"><a class="markdownIt-Anchor" href="#ae-model定义"></a> AE model定义</h4>
+<div class="code-wrapper"><pre><code class="hljs python">
+<span class="hljs-comment"># 定义 Autoencoder 模型 用nn.Module作为父类，方便用优化器追踪梯度</span>
+<span class="hljs-keyword">class</span> <span class="hljs-title class_">Autoencoder</span>(nn.Module):
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, input_size, hidden_size</span>):
+        <span class="hljs-built_in">super</span>(Autoencoder, <span class="hljs-variable language_">self</span>).__init__()
+        
+        <span class="hljs-comment"># 编码器</span>
+        <span class="hljs-variable language_">self</span>.encoder = nn.Sequential(
+            nn.Linear(input_size, hidden_size),
+            nn.ReLU()  <span class="hljs-comment"># 激活函数</span>
+        )
+        <span class="hljs-comment">#nn.linear是网络中的全连接层，第一个参数代表的是输入的二维张量的第二个size，相当于上一层神经元个数，第二个参数则是下一层神经元个数</span>
+        <span class="hljs-comment">#将每一个input_size维数的高维向量转化维hidden_size的低维向量</span>
+        
+        <span class="hljs-comment"># 解码器</span>
+        <span class="hljs-variable language_">self</span>.decoder = nn.Sequential(
+            nn.Linear(hidden_size, input_size),
+            nn.Sigmoid()  <span class="hljs-comment"># 将输出范围限定在 [0, 1]</span>
+        )
+        <span class="hljs-comment">#这里要恢复到原始维数，所以参数是倒过来的</span>
+    
+    <span class="hljs-keyword">def</span> <span class="hljs-title function_">forward</span>(<span class="hljs-params">self, x</span>):
+        encoded = <span class="hljs-variable language_">self</span>.encoder(x)
+        decoded = <span class="hljs-variable language_">self</span>.decoder(encoded)
+        <span class="hljs-keyword">return</span> decoded
+</code></pre></div>
+<h4 id="加载数据定义优化器-损失函数"><a class="markdownIt-Anchor" href="#加载数据定义优化器-损失函数"></a> 加载数据，定义优化器、损失函数</h4>
+<div class="code-wrapper"><pre><code class="hljs python">X = np.random.rand(<span class="hljs-number">1000</span>, <span class="hljs-number">64</span>)  <span class="hljs-comment"># 1000 个样本，每个样本有 64 维光谱特征</span>
+X = torch.tensor(X, dtype=torch.float32)
+
+<span class="hljs-comment"># 创建数据加载器</span>
+dataset = TensorDataset(X, X)  <span class="hljs-comment"># 输入数据与输出数据相同</span>
+dataloader = DataLoader(dataset, batch_size=<span class="hljs-number">32</span>, shuffle=<span class="hljs-literal">True</span>)
+
+<span class="hljs-comment"># 定义模型、优化器和损失函数</span>
+input_size = <span class="hljs-number">64</span>
+hidden_size = <span class="hljs-number">32</span>  <span class="hljs-comment"># 压缩到 32 维</span>
+autoencoder = Autoencoder(input_size=input_size, hidden_size=hidden_size)
+optimizer = optim.Adam(autoencoder.parameters(), lr=<span class="hljs-number">0.001</span>)
+<span class="hljs-comment">#我们定义的model用了nn.Module的基类，通过.parameters就可以访问所有要训练的参数</span>
+<span class="hljs-comment">#包括encoder和decoder二者的参数，因为二者是要一起训练的</span>
+criterion = nn.MSELoss()  <span class="hljs-comment"># 损失函数为均方误差</span>
+</code></pre></div>
+<h4 id="train"><a class="markdownIt-Anchor" href="#train"></a> train</h4>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 训练 Autoencoder 模型</span>
+num_epochs = <span class="hljs-number">50</span>
+<span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_epochs):
+    <span class="hljs-keyword">for</span> data, target <span class="hljs-keyword">in</span> dataloader:
+        optimizer.zero_grad() <span class="hljs-comment">#清空梯度</span>
+        output = autoencoder(data) <span class="hljs-comment">#前向传播</span>
+        loss = criterion(output, target)
+        <span class="hljs-comment">#target即为原始数据</span>
+        loss.backward()
+        <span class="hljs-comment">#反向传播</span>
+        optimizer.step()
+        <span class="hljs-comment">#step 梯度下降</span>
+    
+    <span class="hljs-keyword">if</span> epoch % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>:
+        <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Epoch <span class="hljs-subst">&#123;epoch&#125;</span>, Loss: <span class="hljs-subst">&#123;loss.item()&#125;</span>&#x27;</span>)
+</code></pre></div>
+<h4 id="test"><a class="markdownIt-Anchor" href="#test"></a> test</h4>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 使用训练好的模型进行降维和重构</span>
+encoded_data = autoencoder.encoder(X).detach().numpy()
+decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()</code></pre></div>
+<h1 id="2vae变分自动编码器"><a class="markdownIt-Anchor" href="#2vae变分自动编码器"></a> 2.VAE（变分自动编码器）</h1>
+<h2 id="准备知识"><a class="markdownIt-Anchor" href="#准备知识"></a> 准备知识</h2>
+<h3 id="1潜在变量"><a class="markdownIt-Anchor" href="#1潜在变量"></a> （1）潜在变量</h3>
+<h3 id="2极大似然估计"><a class="markdownIt-Anchor" href="#2极大似然估计"></a> （2）极大似然估计</h3>
+<h3 id="3kl散度"><a class="markdownIt-Anchor" href="#3kl散度"></a> （3）KL散度</h3>
+<h2 id="vae主要思想"><a class="markdownIt-Anchor" href="#vae主要思想"></a> VAE主要思想</h2>
+<h2 id="vae的损失函数推导"><a class="markdownIt-Anchor" href="#vae的损失函数推导"></a> VAE的损失函数推导</h2>
+<h2 id="采样重参数技巧"><a class="markdownIt-Anchor" href="#采样重参数技巧"></a> 采样：重参数技巧</h2>
+<h2 id="代码实例"><a class="markdownIt-Anchor" href="#代码实例"></a> 代码实例</h2>
+
                 
               </div>
             
@@ -336,7 +420,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%AF%BE%E7%A8%8B%E5%86%85%E5%AE%B9/" class="category-chain-item">课程内容</a>
+  <a href="/categories/%E7%A7%91%E7%A0%94/" class="category-chain-item">科研</a>
   
   
 
@@ -351,7 +435,7 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/Games105/" class="print-no-link">#Games105</a>
+        <a href="/tags/VAE/" class="print-no-link">#VAE</a>
       
     </div>
   
@@ -363,8 +447,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>Games105学习札记1</div>
-      <div>https://fightforql.github.io/2025/02/20/角色动画1/</div>
+      <div>VAE</div>
+      <div>https://fightforql.github.io/2025/03/27/VAE/</div>
     </div>
     <div class="license-meta">
       
@@ -376,7 +460,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>Posted on</div>
-          <div>February 20, 2025</div>
+          <div>March 27, 2025</div>
         </div>
       
       
@@ -408,18 +492,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/02/26/IQA%E5%AF%B9%E6%8A%97%E9%B2%81%E6%A3%92%E6%80%A7%E8%AF%84%E4%BC%B0/" title="IQA之对抗鲁棒性评估">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">IQA之对抗鲁棒性评估</span>
-                        <span class="visible-mobile">Previous</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/07/%E7%88%AC%E8%99%AB%E5%85%A5%E9%97%A8/" title="爬虫零基础学习">
-                        <span class="hidden-mobile">爬虫零基础学习</span>
+                      <a href="/2025/03/13/GAN/" title="GAN model学习">
+                        <span class="hidden-mobile">GAN model学习</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
