@@ -19,12 +19,12 @@
   <meta name="author" content="lsy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.GAN的目标  GAN是生成模型的一种  区分生成模型与判别模型： 生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据； 判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。 假定输入x,输出y 判别模型相当于是在估计条件概率分布P(y∣x)P(y|x)P(y∣x),生成模型则是在">
+    <meta name="description" content="1.GAN的目标GAN是生成模型的一种区分生成模型与判别模型：生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据；判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。 假定输入x,输出y 判别模型相当于是在估计条件概率分布$P(y|x)$,生成模型则是在估计联合概率分布$P(x,y)$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="GAN model学习">
 <meta property="og:url" content="https://fightforql.github.io/2025/03/13/GAN/index.html">
 <meta property="og:site_name" content="lsylalala">
-<meta property="og:description" content="1.GAN的目标  GAN是生成模型的一种  区分生成模型与判别模型： 生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据； 判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。 假定输入x,输出y 判别模型相当于是在估计条件概率分布P(y∣x)P(y|x)P(y∣x),生成模型则是在">
+<meta property="og:description" content="1.GAN的目标GAN是生成模型的一种区分生成模型与判别模型：生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据；判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。 假定输入x,输出y 判别模型相当于是在估计条件概率分布$P(y|x)$,生成模型则是在估计联合概率分布$P(x,y)$">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-03-13T05:28:00.000Z">
 <meta property="article:modified_time" content="2025-03-13T16:14:29.764Z">
@@ -245,7 +245,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          584 words
+          573 words
         
       </span>
     
@@ -318,28 +318,13 @@
             
               <div class="markdown-body">
                 
-                <h1 id="1gan的目标"><a class="markdownIt-Anchor" href="#1gan的目标"></a> 1.GAN的目标</h1>
-<h2 id="gan是生成模型的一种"><a class="markdownIt-Anchor" href="#gan是生成模型的一种"></a> GAN是生成模型的一种</h2>
-<h3 id="区分生成模型与判别模型"><a class="markdownIt-Anchor" href="#区分生成模型与判别模型"></a> 区分生成模型与判别模型：</h3>
-<p>生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据；<br />
-判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。</p>
-<p>假定输入x,输出y 判别模型相当于是在估计条件概率分布<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(y|x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>,生成模型则是在估计联合概率分布<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p>
+                <h1 id="1-GAN的目标"><a href="#1-GAN的目标" class="headerlink" title="1.GAN的目标"></a>1.GAN的目标</h1><h2 id="GAN是生成模型的一种"><a href="#GAN是生成模型的一种" class="headerlink" title="GAN是生成模型的一种"></a>GAN是生成模型的一种</h2><h3 id="区分生成模型与判别模型："><a href="#区分生成模型与判别模型：" class="headerlink" title="区分生成模型与判别模型："></a>区分生成模型与判别模型：</h3><p>生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据；<br>判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。</p>
+<p>假定输入x,输出y 判别模型相当于是在估计条件概率分布$P(y|x)$,生成模型则是在估计联合概率分布$P(x,y)$</p>
 <p>举个例子，输入手写数字图片集，判别模型学习的目标是对于给出的图片，可以判断是哪个数字；而生成模型的目标是生成新的数字图片</p>
-<h2 id="gan的目标"><a class="markdownIt-Anchor" href="#gan的目标"></a> GAN的目标</h2>
-<h1 id="2gan生成对抗网络的思想"><a class="markdownIt-Anchor" href="#2gan生成对抗网络的思想"></a> 2.GAN（生成对抗网络）的思想：</h1>
-<h2 id="a-由两个模型组成"><a class="markdownIt-Anchor" href="#a-由两个模型组成"></a> a. 由两个模型组成</h2>
-<p>生成器G(Generator)<br />
-鉴别器D(Discriminator)</p>
-<h2 id="b对抗思想"><a class="markdownIt-Anchor" href="#b对抗思想"></a> b.对抗思想</h2>
-<p>生成器努力生成能够欺骗鉴别器的样本，而鉴别器努力识别生成的样本是真是假(即是来自数据集还是有生成器生成的),<br />
-我们希望达到的目标是：鉴别器无法区分生成器生成的样本到底是真是假</p>
-<h2 id="c生成器和鉴别器之间的关系是一种博弈"><a class="markdownIt-Anchor" href="#c生成器和鉴别器之间的关系是一种博弈"></a> c.生成器和鉴别器之间的关系是一种博弈</h2>
-<h3 id="i零和博弈"><a class="markdownIt-Anchor" href="#i零和博弈"></a> i.零和博弈</h3>
-<h3 id="ii纳什均衡"><a class="markdownIt-Anchor" href="#ii纳什均衡"></a> ii.纳什均衡</h3>
-<h1 id="3gan的训练过程"><a class="markdownIt-Anchor" href="#3gan的训练过程"></a> 3.GAN的训练过程：</h1>
-<p>以pytorch代码为例：(判别器选择了简单的MLP)</p>
-<h3 id="首先是一个很简单的判别器通过简单的mlp输出01之间的一个概率作为outputstargets即为真实标签交叉熵损失函数一般广泛应用于分类问题中"><a class="markdownIt-Anchor" href="#首先是一个很简单的判别器通过简单的mlp输出01之间的一个概率作为outputstargets即为真实标签交叉熵损失函数一般广泛应用于分类问题中"></a> 首先是一个很简单的判别器，通过简单的MLP输出（0，1)之间的一个概率作为outputs，targets即为真实标签，交叉熵损失函数一般广泛应用于分类问题中</h3>
-<div class="code-wrapper"><pre><code class="hljs python">
+<h2 id="GAN的目标"><a href="#GAN的目标" class="headerlink" title="GAN的目标"></a>GAN的目标</h2><h1 id="2-GAN（生成对抗网络）的思想："><a href="#2-GAN（生成对抗网络）的思想：" class="headerlink" title="2.GAN（生成对抗网络）的思想："></a>2.GAN（生成对抗网络）的思想：</h1><h2 id="a-由两个模型组成"><a href="#a-由两个模型组成" class="headerlink" title="a. 由两个模型组成"></a>a. 由两个模型组成</h2><p>生成器G(Generator)<br>鉴别器D(Discriminator)</p>
+<h2 id="b-对抗思想"><a href="#b-对抗思想" class="headerlink" title="b.对抗思想"></a>b.对抗思想</h2><p>生成器努力生成能够欺骗鉴别器的样本，而鉴别器努力识别生成的样本是真是假(即是来自数据集还是有生成器生成的),<br>我们希望达到的目标是：鉴别器无法区分生成器生成的样本到底是真是假</p>
+<h2 id="c-生成器和鉴别器之间的关系是一种博弈"><a href="#c-生成器和鉴别器之间的关系是一种博弈" class="headerlink" title="c.生成器和鉴别器之间的关系是一种博弈"></a>c.生成器和鉴别器之间的关系是一种博弈</h2><h3 id="i-零和博弈"><a href="#i-零和博弈" class="headerlink" title="i.零和博弈"></a>i.零和博弈</h3><h3 id="ii-纳什均衡"><a href="#ii-纳什均衡" class="headerlink" title="ii.纳什均衡"></a>ii.纳什均衡</h3><h1 id="3-GAN的训练过程："><a href="#3-GAN的训练过程：" class="headerlink" title="3.GAN的训练过程："></a>3.GAN的训练过程：</h1><p>以pytorch代码为例：(判别器选择了简单的MLP)</p>
+<h3 id="首先是一个很简单的判别器，通过简单的MLP输出（0，1-之间的一个概率作为outputs，targets即为真实标签，交叉熵损失函数一般广泛应用于分类问题中"><a href="#首先是一个很简单的判别器，通过简单的MLP输出（0，1-之间的一个概率作为outputs，targets即为真实标签，交叉熵损失函数一般广泛应用于分类问题中" class="headerlink" title="首先是一个很简单的判别器，通过简单的MLP输出（0，1)之间的一个概率作为outputs，targets即为真实标签，交叉熵损失函数一般广泛应用于分类问题中"></a>首先是一个很简单的判别器，通过简单的MLP输出（0，1)之间的一个概率作为outputs，targets即为真实标签，交叉熵损失函数一般广泛应用于分类问题中</h3><div class="code-wrapper"><pre><code class="hljs python">
 <span class="hljs-comment"># 判别器</span>
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">Discriminator</span>(nn.Module):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self</span>):
@@ -369,8 +354,7 @@
         loss.backward()
         <span class="hljs-variable language_">self</span>.optimiser.step()
 </code></pre></div>
-<h3 id="然后是生成器"><a class="markdownIt-Anchor" href="#然后是生成器"></a> 然后是生成器</h3>
-
+<h3 id="然后是生成器"><a href="#然后是生成器" class="headerlink" title="然后是生成器"></a>然后是生成器</h3>
                 
               </div>
             
@@ -470,8 +454,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2025/02/26/IQA0/" title="IQA之入门必备知识">
-                        <span class="hidden-mobile">IQA之入门必备知识</span>
+                      <a href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/" title="NR-IQA之对抗攻击方法">
+                        <span class="hidden-mobile">NR-IQA之对抗攻击方法</span>
                         <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
