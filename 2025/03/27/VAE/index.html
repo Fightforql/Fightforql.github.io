@@ -19,12 +19,12 @@
   <meta name="author" content="lsy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.先来看AE（自动编码器）本质是无监督学习，主要就是一个Encoder和Decoderi.Encoder将高维数据映射到低维空间，实际上起一个降维的作用,用 g_\theta 表示Encoder的网络， z&#x3D;g_\theta(x) 表示高维数据x经过网络之后产生低维的z ii.Decoder从降维后的数据还原到原始数据,用 f_\lambda 表示Encoder的网络, x^{new}&#x3D;f_\l">
+    <meta name="description" content="1.先来看AE（自动编码器）  本质是无监督学习，主要就是一个Encoder和Decoder  i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 $$g_\theta$$ 表示Encoder的网络， $$z&#x3D;g_\theta(x)$$ 表示高维数据x经过网络之后产生低维的z  ii.Decoder 从降维后的数据还原到原始数据,用 $$f_\lambda$$ 表示Enco">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VAE">
 <meta property="og:url" content="https://fightforql.github.io/2025/03/27/VAE/index.html">
 <meta property="og:site_name" content="lsylalala">
-<meta property="og:description" content="1.先来看AE（自动编码器）本质是无监督学习，主要就是一个Encoder和Decoderi.Encoder将高维数据映射到低维空间，实际上起一个降维的作用,用 g_\theta 表示Encoder的网络， z&#x3D;g_\theta(x) 表示高维数据x经过网络之后产生低维的z ii.Decoder从降维后的数据还原到原始数据,用 f_\lambda 表示Encoder的网络, x^{new}&#x3D;f_\l">
+<meta property="og:description" content="1.先来看AE（自动编码器）  本质是无监督学习，主要就是一个Encoder和Decoder  i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 $$g_\theta$$ 表示Encoder的网络， $$z&#x3D;g_\theta(x)$$ 表示高维数据x经过网络之后产生低维的z  ii.Decoder 从降维后的数据还原到原始数据,用 $$f_\lambda$$ 表示Enco">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-03-27T05:28:00.000Z">
 <meta property="article:modified_time" content="2025-03-28T13:28:42.185Z">
@@ -102,7 +102,11 @@
 
 
   
-<meta name="generator" content="Hexo 7.3.0"></head>
+<!-- hexo injector head_end start -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.min.css">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/hexo-math@4.0.0/dist/style.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head>
 
 
 <body>
@@ -245,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          666 words
+          687 words
         
       </span>
     
@@ -318,10 +322,19 @@
             
               <div class="markdown-body">
                 
-                <h1 id="1-先来看AE（自动编码器）"><a href="#1-先来看AE（自动编码器）" class="headerlink" title="1.先来看AE（自动编码器）"></a>1.先来看AE（自动编码器）</h1><h2 id="本质是无监督学习，主要就是一个Encoder和Decoder"><a href="#本质是无监督学习，主要就是一个Encoder和Decoder" class="headerlink" title="本质是无监督学习，主要就是一个Encoder和Decoder"></a>本质是无监督学习，主要就是一个Encoder和Decoder</h2><h3 id="i-Encoder"><a href="#i-Encoder" class="headerlink" title="i.Encoder"></a>i.Encoder</h3><p>将高维数据映射到低维空间，实际上起一个降维的作用,用 <script type="math/tex">g_\theta</script> 表示Encoder的网络， <script type="math/tex">z=g_\theta(x)</script> 表示高维数据x经过网络之后产生低维的z</p>
-<h3 id="ii-Decoder"><a href="#ii-Decoder" class="headerlink" title="ii.Decoder"></a>ii.Decoder</h3><p>从降维后的数据还原到原始数据,用 <script type="math/tex">f_\lambda</script> 表示Encoder的网络, <script type="math/tex">x^{new}=f_\lambda(x)</script></p>
-<p>此外，还需要一个loss函数，可以简单定义为<script type="math/tex">x^{new}</script>与x的距离(L2范数)：</p>
-<script type="math/tex; mode=display">L(\theta,\lambda)=\frac{1}{n}\sum_{i=1}^n(x^i-x^{new(i)})^2</script><h4 id="由此可见，AE可以完成一些降维、压缩、特征提取等任务"><a href="#由此可见，AE可以完成一些降维、压缩、特征提取等任务" class="headerlink" title="由此可见，AE可以完成一些降维、压缩、特征提取等任务"></a>由此可见，AE可以完成一些降维、压缩、特征提取等任务</h4><h3 id="iii-代码示例"><a href="#iii-代码示例" class="headerlink" title="iii.代码示例"></a>iii.代码示例</h3><h4 id="AE-model定义"><a href="#AE-model定义" class="headerlink" title="AE model定义"></a>AE model定义</h4><div class="code-wrapper"><pre><code class="hljs python">
+                <h1 id="1先来看ae自动编码器"><a class="markdownIt-Anchor" href="#1先来看ae自动编码器"></a> 1.先来看AE（自动编码器）</h1>
+<h2 id="本质是无监督学习主要就是一个encoder和decoder"><a class="markdownIt-Anchor" href="#本质是无监督学习主要就是一个encoder和decoder"></a> 本质是无监督学习，主要就是一个Encoder和Decoder</h2>
+<h3 id="iencoder"><a class="markdownIt-Anchor" href="#iencoder"></a> i.Encoder</h3>
+<p>将高维数据映射到低维空间，实际上起一个降维的作用,用 $$g_\theta$$ 表示Encoder的网络， $$z=g_\theta(x)$$ 表示高维数据x经过网络之后产生低维的z</p>
+<h3 id="iidecoder"><a class="markdownIt-Anchor" href="#iidecoder"></a> ii.Decoder</h3>
+<p>从降维后的数据还原到原始数据,用 $$f_\lambda$$ 表示Encoder的网络, $$x^{new}=f_\lambda(x)$$</p>
+<p>此外，还需要一个loss函数，可以简单定义为$$x^{new}$$与x的距离(L2范数)：</p>
+<p><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>L</mi><mo stretchy="false">(</mo><mi>θ</mi><mo separator="true">,</mo><mi>λ</mi><mo stretchy="false">)</mo><mo>=</mo><mfrac><mn>1</mn><mi>n</mi></mfrac><munderover><mo>∑</mo><mrow><mi>i</mi><mo>=</mo><mn>1</mn></mrow><mi>n</mi></munderover><mo stretchy="false">(</mo><msup><mi>x</mi><mi>i</mi></msup><mo>−</mo><msup><mi>x</mi><mrow><mi>n</mi><mi>e</mi><mi>w</mi><mo stretchy="false">(</mo><mi>i</mi><mo stretchy="false">)</mo></mrow></msup><msup><mo stretchy="false">)</mo><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">L(\theta,\lambda)=\frac{1}{n}\sum_{i=1}^n(x^i-x^{new(i)})^2
+</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">L</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">λ</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:2.929066em;vertical-align:-1.277669em;"></span><span class="mord"><span class="mopen nulldelimiter"></span><span class="mfrac"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.32144em;"><span style="top:-2.314em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord mathdefault">n</span></span></span><span style="top:-3.23em;"><span class="pstrut" style="height:3em;"></span><span class="frac-line" style="border-bottom-width:0.04em;"></span></span><span style="top:-3.677em;"><span class="pstrut" style="height:3em;"></span><span class="mord"><span class="mord">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.686em;"><span></span></span></span></span></span><span class="mclose nulldelimiter"></span></span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mop op-limits"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:1.6513970000000002em;"><span style="top:-1.872331em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mrel mtight">=</span><span class="mord mtight">1</span></span></span></span><span style="top:-3.050005em;"><span class="pstrut" style="height:3.05em;"></span><span><span class="mop op-symbol large-op">∑</span></span></span><span style="top:-4.3000050000000005em;margin-left:0em;"><span class="pstrut" style="height:3.05em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:1.277669em;"><span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8746639999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">i</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1.188em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.938em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">e</span><span class="mord mathdefault mtight" style="margin-right:0.02691em;">w</span><span class="mopen mtight">(</span><span class="mord mathdefault mtight">i</span><span class="mclose mtight">)</span></span></span></span></span></span></span></span></span><span class="mclose"><span class="mclose">)</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8641079999999999em;"><span style="top:-3.113em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span></span></span></span></span></p>
+<h4 id="由此可见ae可以完成一些降维-压缩-特征提取等任务"><a class="markdownIt-Anchor" href="#由此可见ae可以完成一些降维-压缩-特征提取等任务"></a> 由此可见，AE可以完成一些降维、压缩、特征提取等任务</h4>
+<h3 id="iii代码示例"><a class="markdownIt-Anchor" href="#iii代码示例"></a> iii.代码示例</h3>
+<h4 id="ae-model定义"><a class="markdownIt-Anchor" href="#ae-model定义"></a> AE model定义</h4>
+<div class="code-wrapper"><pre><code class="hljs python">
 <span class="hljs-comment"># 定义 Autoencoder 模型 用nn.Module作为父类，方便用优化器追踪梯度</span>
 <span class="hljs-keyword">class</span> <span class="hljs-title class_">Autoencoder</span>(nn.Module):
     <span class="hljs-keyword">def</span> <span class="hljs-title function_">__init__</span>(<span class="hljs-params">self, input_size, hidden_size</span>):
@@ -347,7 +360,8 @@
         decoded = <span class="hljs-variable language_">self</span>.decoder(encoded)
         <span class="hljs-keyword">return</span> decoded
 </code></pre></div>
-<h4 id="加载数据，定义优化器、损失函数"><a href="#加载数据，定义优化器、损失函数" class="headerlink" title="加载数据，定义优化器、损失函数"></a>加载数据，定义优化器、损失函数</h4><div class="code-wrapper"><pre><code class="hljs python">X = np.random.rand(<span class="hljs-number">1000</span>, <span class="hljs-number">64</span>)  <span class="hljs-comment"># 1000 个样本，每个样本有 64 维光谱特征</span>
+<h4 id="加载数据定义优化器-损失函数"><a class="markdownIt-Anchor" href="#加载数据定义优化器-损失函数"></a> 加载数据，定义优化器、损失函数</h4>
+<div class="code-wrapper"><pre><code class="hljs python">X = np.random.rand(<span class="hljs-number">1000</span>, <span class="hljs-number">64</span>)  <span class="hljs-comment"># 1000 个样本，每个样本有 64 维光谱特征</span>
 X = torch.tensor(X, dtype=torch.float32)
 
 <span class="hljs-comment"># 创建数据加载器</span>
@@ -363,7 +377,8 @@ optimizer = optim.Adam(autoencoder.parameters(), lr=<span class="hljs-number">0.
 <span class="hljs-comment">#包括encoder和decoder二者的参数，因为二者是要一起训练的</span>
 criterion = nn.MSELoss()  <span class="hljs-comment"># 损失函数为均方误差</span>
 </code></pre></div>
-<h4 id="train"><a href="#train" class="headerlink" title="train"></a>train</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 训练 Autoencoder 模型</span>
+<h4 id="train"><a class="markdownIt-Anchor" href="#train"></a> train</h4>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 训练 Autoencoder 模型</span>
 num_epochs = <span class="hljs-number">50</span>
 <span class="hljs-keyword">for</span> epoch <span class="hljs-keyword">in</span> <span class="hljs-built_in">range</span>(num_epochs):
     <span class="hljs-keyword">for</span> data, target <span class="hljs-keyword">in</span> dataloader:
@@ -379,10 +394,20 @@ num_epochs = <span class="hljs-number">50</span>
     <span class="hljs-keyword">if</span> epoch % <span class="hljs-number">10</span> == <span class="hljs-number">0</span>:
         <span class="hljs-built_in">print</span>(<span class="hljs-string">f&#x27;Epoch <span class="hljs-subst">&#123;epoch&#125;</span>, Loss: <span class="hljs-subst">&#123;loss.item()&#125;</span>&#x27;</span>)
 </code></pre></div>
-<h4 id="test"><a href="#test" class="headerlink" title="test"></a>test</h4><div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 使用训练好的模型进行降维和重构</span>
+<h4 id="test"><a class="markdownIt-Anchor" href="#test"></a> test</h4>
+<div class="code-wrapper"><pre><code class="hljs python"><span class="hljs-comment"># 使用训练好的模型进行降维和重构</span>
 encoded_data = autoencoder.encoder(X).detach().numpy()
 decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()</code></pre></div>
-<h1 id="2-VAE（变分自动编码器）"><a href="#2-VAE（变分自动编码器）" class="headerlink" title="2.VAE（变分自动编码器）"></a>2.VAE（变分自动编码器）</h1><h2 id="准备知识"><a href="#准备知识" class="headerlink" title="准备知识"></a>准备知识</h2><h3 id="（1）潜在变量"><a href="#（1）潜在变量" class="headerlink" title="（1）潜在变量"></a>（1）潜在变量</h3><h3 id="（2）极大似然估计"><a href="#（2）极大似然估计" class="headerlink" title="（2）极大似然估计"></a>（2）极大似然估计</h3><h3 id="（3）KL散度"><a href="#（3）KL散度" class="headerlink" title="（3）KL散度"></a>（3）KL散度</h3><h2 id="VAE主要思想"><a href="#VAE主要思想" class="headerlink" title="VAE主要思想"></a>VAE主要思想</h2><h2 id="VAE的损失函数推导"><a href="#VAE的损失函数推导" class="headerlink" title="VAE的损失函数推导"></a>VAE的损失函数推导</h2><h2 id="采样：重参数技巧"><a href="#采样：重参数技巧" class="headerlink" title="采样：重参数技巧"></a>采样：重参数技巧</h2><h2 id="代码实例"><a href="#代码实例" class="headerlink" title="代码实例"></a>代码实例</h2>
+<h1 id="2vae变分自动编码器"><a class="markdownIt-Anchor" href="#2vae变分自动编码器"></a> 2.VAE（变分自动编码器）</h1>
+<h2 id="准备知识"><a class="markdownIt-Anchor" href="#准备知识"></a> 准备知识</h2>
+<h3 id="1潜在变量"><a class="markdownIt-Anchor" href="#1潜在变量"></a> （1）潜在变量</h3>
+<h3 id="2极大似然估计"><a class="markdownIt-Anchor" href="#2极大似然估计"></a> （2）极大似然估计</h3>
+<h3 id="3kl散度"><a class="markdownIt-Anchor" href="#3kl散度"></a> （3）KL散度</h3>
+<h2 id="vae主要思想"><a class="markdownIt-Anchor" href="#vae主要思想"></a> VAE主要思想</h2>
+<h2 id="vae的损失函数推导"><a class="markdownIt-Anchor" href="#vae的损失函数推导"></a> VAE的损失函数推导</h2>
+<h2 id="采样重参数技巧"><a class="markdownIt-Anchor" href="#采样重参数技巧"></a> 采样：重参数技巧</h2>
+<h2 id="代码实例"><a class="markdownIt-Anchor" href="#代码实例"></a> 代码实例</h2>
+
                 
               </div>
             
