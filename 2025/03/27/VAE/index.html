@@ -496,9 +496,9 @@ decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()<
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/28/RNN/" title="VAE">
+                      <a href="/2025/03/28/RNN/" title="RNN">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">VAE</span>
+                        <span class="hidden-mobile">RNN</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -836,5 +836,20 @@ decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()<
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

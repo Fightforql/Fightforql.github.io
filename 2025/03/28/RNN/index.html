@@ -21,14 +21,14 @@
   
     <meta name="description" content="1.简单的序列模型  自回归模型 在序列模型中，我们要估计的是P(xt∣xt−1,...,x1)P(x_t|x_{t-1},...,x_1)P(xt​∣xt−1​,...,x1​)，而如果只是用回归(相当于对已有的带有标签的数据做拟合)模型，数据量是很大的，我们采取的模型有两种：  （1）自回归模型autoregressive models 用前面时刻的xt−λ,...,xt−1x_{t-\la">
 <meta property="og:type" content="article">
-<meta property="og:title" content="VAE">
+<meta property="og:title" content="RNN">
 <meta property="og:url" content="https://fightforql.github.io/2025/03/28/RNN/index.html">
 <meta property="og:site_name" content="lsylalala">
 <meta property="og:description" content="1.简单的序列模型  自回归模型 在序列模型中，我们要估计的是P(xt∣xt−1,...,x1)P(x_t|x_{t-1},...,x_1)P(xt​∣xt−1​,...,x1​)，而如果只是用回归(相当于对已有的带有标签的数据做拟合)模型，数据量是很大的，我们采取的模型有两种：  （1）自回归模型autoregressive models 用前面时刻的xt−λ,...,xt−1x_{t-\la">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://fightforql.github.io/2025/03/28/RNN/images/1.png">
 <meta property="article:published_time" content="2025-03-28T15:28:00.000Z">
-<meta property="article:modified_time" content="2025-03-28T15:19:36.285Z">
+<meta property="article:modified_time" content="2025-03-28T15:21:07.229Z">
 <meta property="article:author" content="lsy">
 <meta property="article:tag" content="深度学习">
 <meta name="twitter:card" content="summary_large_image">
@@ -38,7 +38,7 @@
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>VAE - lsylalala</title>
+  <title>RNN - lsylalala</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -223,7 +223,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="VAE"></span>
+            <span id="subtitle" data-typed-text="RNN"></span>
           
         </div>
 
@@ -319,7 +319,7 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">VAE</h1>
+            <h1 id="seo-header">RNN</h1>
             
             
               <div class="markdown-body">
@@ -403,7 +403,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>VAE</div>
+      <div>RNN</div>
       <div>https://fightforql.github.io/2025/03/28/RNN/</div>
     </div>
     <div class="license-meta">
@@ -782,5 +782,20 @@
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
