@@ -325,17 +325,17 @@
                 <h1 id="1gan的目标"><a class="markdownIt-Anchor" href="#1gan的目标"></a> 1.GAN的目标</h1>
 <h2 id="gan是生成模型的一种"><a class="markdownIt-Anchor" href="#gan是生成模型的一种"></a> GAN是生成模型的一种</h2>
 <h3 id="区分生成模型与判别模型"><a class="markdownIt-Anchor" href="#区分生成模型与判别模型"></a> 区分生成模型与判别模型：</h3>
-<p>生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据；<br />
+<p>生成模型通常是无监督学习(事实上也有监督学习的模型)，即数据集是没有标签的，模型从数据集中学习，可以生成数据集中没有的数据；<br>
 判别模型很多是有监督学习，即输入是带有标签的，模型通过从数据集中学习，可以对新数据进行判别。</p>
 <p>假定输入x,输出y 判别模型相当于是在估计条件概率分布<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>y</mi><mi mathvariant="normal">∣</mi><mi>x</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(y|x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mord">∣</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>,生成模型则是在估计联合概率分布<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>P</mi><mo stretchy="false">(</mo><mi>x</mi><mo separator="true">,</mo><mi>y</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">P(x,y)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.13889em;">P</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">y</span><span class="mclose">)</span></span></span></span></p>
 <p>举个例子，输入手写数字图片集，判别模型学习的目标是对于给出的图片，可以判断是哪个数字；而生成模型的目标是生成新的数字图片</p>
 <h2 id="gan的目标"><a class="markdownIt-Anchor" href="#gan的目标"></a> GAN的目标</h2>
 <h1 id="2gan生成对抗网络的思想"><a class="markdownIt-Anchor" href="#2gan生成对抗网络的思想"></a> 2.GAN（生成对抗网络）的思想：</h1>
 <h2 id="a-由两个模型组成"><a class="markdownIt-Anchor" href="#a-由两个模型组成"></a> a. 由两个模型组成</h2>
-<p>生成器G(Generator)<br />
+<p>生成器G(Generator)<br>
 鉴别器D(Discriminator)</p>
 <h2 id="b对抗思想"><a class="markdownIt-Anchor" href="#b对抗思想"></a> b.对抗思想</h2>
-<p>生成器努力生成能够欺骗鉴别器的样本，而鉴别器努力识别生成的样本是真是假(即是来自数据集还是有生成器生成的),<br />
+<p>生成器努力生成能够欺骗鉴别器的样本，而鉴别器努力识别生成的样本是真是假(即是来自数据集还是有生成器生成的),<br>
 我们希望达到的目标是：鉴别器无法区分生成器生成的样本到底是真是假</p>
 <h2 id="c生成器和鉴别器之间的关系是一种博弈"><a class="markdownIt-Anchor" href="#c生成器和鉴别器之间的关系是一种博弈"></a> c.生成器和鉴别器之间的关系是一种博弈</h2>
 <h3 id="i零和博弈"><a class="markdownIt-Anchor" href="#i零和博弈"></a> i.零和博弈</h3>
