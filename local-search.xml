@@ -79,11 +79,11 @@
   
   
   <entry>
-    <title>IQA之入门必备知识</title>
-    <link href="/2025/02/26/IQA0/"/>
-    <url>/2025/02/26/IQA0/</url>
+    <title>NR-IQA之对抗攻击方法</title>
+    <link href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/"/>
+    <url>/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/</url>
     
-    <content type="html"><![CDATA[<h1 id="iqa图像质量评估"><a class="markdownIt-Anchor" href="#iqa图像质量评估"></a> IQA——图像质量评估</h1><p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义</p><h2 id="1图像质量评估"><a class="markdownIt-Anchor" href="#1图像质量评估"></a> 1.图像质量评估</h2><p>对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价</p><h2 id="2分类"><a class="markdownIt-Anchor" href="#2分类"></a> 2.分类</h2><p>根据有没有参与这一角度，分为主观评价和客观评价</p><h2 id="3主观评价方法"><a class="markdownIt-Anchor" href="#3主观评价方法"></a> 3.主观评价方法</h2><h3 id="i绝对评价"><a class="markdownIt-Anchor" href="#i绝对评价"></a> i.绝对评价</h3><p>评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值</p><h3 id="ii相对评价"><a class="markdownIt-Anchor" href="#ii相对评价"></a> ii.相对评价</h3><p>评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值</p><h2 id="4客观评价方法"><a class="markdownIt-Anchor" href="#4客观评价方法"></a> 4.客观评价方法</h2><p>脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.<br>分为全参考（FR）、半参考（RR）、无参考（NR）</p>]]></content>
+    <content type="html"><![CDATA[<h1 id="一对抗攻击的相关概念"><a class="markdownIt-Anchor" href="#一对抗攻击的相关概念"></a> 一.对抗攻击的相关概念</h1><h2 id="1对抗样本"><a class="markdownIt-Anchor" href="#1对抗样本"></a> 1.对抗样本</h2><h2 id="2对抗攻击目标"><a class="markdownIt-Anchor" href="#2对抗攻击目标"></a> 2.对抗攻击目标</h2><p>非目标攻击or目标攻击</p><h2 id="3对抗攻击知识"><a class="markdownIt-Anchor" href="#3对抗攻击知识"></a> 3.对抗攻击知识</h2><p>根据攻击者掌握信息的多少，分为白盒攻击、灰盒攻击、黑盒攻击</p><p>白盒攻击假设攻击者已获得关于目标模型的一切信息，如模型结构、参数、梯度、训练过程和训练数据.</p><p>黑盒攻击则假设攻击者只能访问目标模型的输出，而不能访问其内部参数和梯度信息</p><h2 id="4对抗攻击能力"><a class="markdownIt-Anchor" href="#4对抗攻击能力"></a> 4.对抗攻击能力</h2><p>诱导性攻击or探索性攻击</p><h2 id="5模型的对抗鲁棒性"><a class="markdownIt-Anchor" href="#5模型的对抗鲁棒性"></a> 5.模型的对抗鲁棒性</h2><p>指对抗环境下模型抵御对抗攻击的能力</p><h1 id="二关于对抗样本存在的解释为什么可以构造出对抗样本"><a class="markdownIt-Anchor" href="#二关于对抗样本存在的解释为什么可以构造出对抗样本"></a> 二.关于对抗样本存在的解释——为什么可以构造出对抗样本？</h1><h1 id="三不同攻击方法"><a class="markdownIt-Anchor" href="#三不同攻击方法"></a> 三.不同攻击方法</h1><h2 id="1基于梯度的白盒攻击"><a class="markdownIt-Anchor" href="#1基于梯度的白盒攻击"></a> 1.基于梯度的白盒攻击</h2><h2 id="2基于优化的白盒攻击"><a class="markdownIt-Anchor" href="#2基于优化的白盒攻击"></a> 2.基于优化的白盒攻击</h2><h2 id="3基于迁移的黑盒攻击"><a class="markdownIt-Anchor" href="#3基于迁移的黑盒攻击"></a> 3.基于迁移的黑盒攻击</h2><h2 id="4基于查询的黑盒攻击"><a class="markdownIt-Anchor" href="#4基于查询的黑盒攻击"></a> 4.基于查询的黑盒攻击</h2>]]></content>
     
     
     <categories>
@@ -129,11 +129,11 @@
   
   
   <entry>
-    <title>NR-IQA之对抗攻击方法</title>
-    <link href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/"/>
-    <url>/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/</url>
+    <title>IQA之入门必备知识</title>
+    <link href="/2025/02/26/IQA0/"/>
+    <url>/2025/02/26/IQA0/</url>
     
-    <content type="html"><![CDATA[<h1 id="一对抗攻击的相关概念"><a class="markdownIt-Anchor" href="#一对抗攻击的相关概念"></a> 一.对抗攻击的相关概念</h1><h2 id="1对抗样本"><a class="markdownIt-Anchor" href="#1对抗样本"></a> 1.对抗样本</h2><h2 id="2对抗攻击目标"><a class="markdownIt-Anchor" href="#2对抗攻击目标"></a> 2.对抗攻击目标</h2><p>非目标攻击or目标攻击</p><h2 id="3对抗攻击知识"><a class="markdownIt-Anchor" href="#3对抗攻击知识"></a> 3.对抗攻击知识</h2><p>根据攻击者掌握信息的多少，分为白盒攻击、灰盒攻击、黑盒攻击</p><p>白盒攻击假设攻击者已获得关于目标模型的一切信息，如模型结构、参数、梯度、训练过程和训练数据.</p><p>黑盒攻击则假设攻击者只能访问目标模型的输出，而不能访问其内部参数和梯度信息</p><h2 id="4对抗攻击能力"><a class="markdownIt-Anchor" href="#4对抗攻击能力"></a> 4.对抗攻击能力</h2><p>诱导性攻击or探索性攻击</p><h2 id="5模型的对抗鲁棒性"><a class="markdownIt-Anchor" href="#5模型的对抗鲁棒性"></a> 5.模型的对抗鲁棒性</h2><p>指对抗环境下模型抵御对抗攻击的能力</p><h1 id="二关于对抗样本存在的解释为什么可以构造出对抗样本"><a class="markdownIt-Anchor" href="#二关于对抗样本存在的解释为什么可以构造出对抗样本"></a> 二.关于对抗样本存在的解释——为什么可以构造出对抗样本？</h1><h1 id="三不同攻击方法"><a class="markdownIt-Anchor" href="#三不同攻击方法"></a> 三.不同攻击方法</h1><h2 id="1基于梯度的白盒攻击"><a class="markdownIt-Anchor" href="#1基于梯度的白盒攻击"></a> 1.基于梯度的白盒攻击</h2><h2 id="2基于优化的白盒攻击"><a class="markdownIt-Anchor" href="#2基于优化的白盒攻击"></a> 2.基于优化的白盒攻击</h2><h2 id="3基于迁移的黑盒攻击"><a class="markdownIt-Anchor" href="#3基于迁移的黑盒攻击"></a> 3.基于迁移的黑盒攻击</h2><h2 id="4基于查询的黑盒攻击"><a class="markdownIt-Anchor" href="#4基于查询的黑盒攻击"></a> 4.基于查询的黑盒攻击</h2>]]></content>
+    <content type="html"><![CDATA[<h1 id="iqa图像质量评估"><a class="markdownIt-Anchor" href="#iqa图像质量评估"></a> IQA——图像质量评估</h1><p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义</p><h2 id="1图像质量评估"><a class="markdownIt-Anchor" href="#1图像质量评估"></a> 1.图像质量评估</h2><p>对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价</p><h2 id="2分类"><a class="markdownIt-Anchor" href="#2分类"></a> 2.分类</h2><p>根据有没有参与这一角度，分为主观评价和客观评价</p><h2 id="3主观评价方法"><a class="markdownIt-Anchor" href="#3主观评价方法"></a> 3.主观评价方法</h2><h3 id="i绝对评价"><a class="markdownIt-Anchor" href="#i绝对评价"></a> i.绝对评价</h3><p>评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值</p><h3 id="ii相对评价"><a class="markdownIt-Anchor" href="#ii相对评价"></a> ii.相对评价</h3><p>评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值</p><h2 id="4客观评价方法"><a class="markdownIt-Anchor" href="#4客观评价方法"></a> 4.客观评价方法</h2><p>脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.<br>分为全参考（FR）、半参考（RR）、无参考（NR）</p>]]></content>
     
     
     <categories>
