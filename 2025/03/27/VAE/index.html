@@ -19,15 +19,15 @@
   <meta name="author" content="lsy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="1.先来看AE（自动编码器） 本质是无监督学习，主要就是一个Encoder和Decoder i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 \(g_\theta\) 表示Encoder的网络， \(z&#x3D;g_\theta(x)\) 表示高维数据x经过网络之后产生低维的z ### ii.Decoder 从降维后的数据还原到原始数据,用 \(f_\lambda\) 表">
+    <meta name="description" content="1.先来看AE（自动编码器） 本质是无监督学习，主要就是一个Encoder和Decoder i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 \(g_\theta\) 表示Encoder的网络， \(z&#x3D;g_\theta(x)\) 表示高维数据x经过网络之后产生低维的z ii.Decoder 从降维后的数据还原到原始数据,用 \(f_\lambda\) 表示En">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VAE">
 <meta property="og:url" content="https://fightforql.github.io/2025/03/27/VAE/index.html">
 <meta property="og:site_name" content="lsylalala">
-<meta property="og:description" content="1.先来看AE（自动编码器） 本质是无监督学习，主要就是一个Encoder和Decoder i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 \(g_\theta\) 表示Encoder的网络， \(z&#x3D;g_\theta(x)\) 表示高维数据x经过网络之后产生低维的z ### ii.Decoder 从降维后的数据还原到原始数据,用 \(f_\lambda\) 表">
+<meta property="og:description" content="1.先来看AE（自动编码器） 本质是无监督学习，主要就是一个Encoder和Decoder i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 \(g_\theta\) 表示Encoder的网络， \(z&#x3D;g_\theta(x)\) 表示高维数据x经过网络之后产生低维的z ii.Decoder 从降维后的数据还原到原始数据,用 \(f_\lambda\) 表示En">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-03-27T05:28:00.000Z">
-<meta property="article:modified_time" content="2025-03-27T15:56:13.970Z">
+<meta property="article:modified_time" content="2025-03-28T13:08:12.993Z">
 <meta property="article:author" content="lsy">
 <meta property="article:tag" content="VAE">
 <meta name="twitter:card" content="summary_large_image">
@@ -325,12 +325,13 @@ id="本质是无监督学习主要就是一个encoder和decoder">本质是无监
 <p>将高维数据映射到低维空间，实际上起一个降维的作用,用 <span
 class="math inline">\(g_\theta\)</span> 表示Encoder的网络， <span
 class="math inline">\(z=g_\theta(x)\)</span>
-表示高维数据x经过网络之后产生低维的z ### ii.Decoder
-从降维后的数据还原到原始数据,用 <span
+表示高维数据x经过网络之后产生低维的z</p>
+<h3 id="ii.decoder">ii.Decoder</h3>
+<p>从降维后的数据还原到原始数据,用 <span
 class="math inline">\(f_\lambda\)</span> 表示Encoder的网络, <span
 class="math inline">\(x^{new}=f_\lambda(x)\)</span></p>
-<p>此外，还需要一个loss函数，可以简单定义为x^new与x的距离(L2范数)：
-<span
+<p>此外，还需要一个loss函数，可以简单定义为<span
+class="math inline">\(x^new\)</span>与x的距离(L2范数)： <span
 class="math inline">\(L(\theta,\lambda)=\frac{1}{n}\sum_{i=1}^n(x^i-x^{new(i)})^2\)</span></p>
 <h4
 id="由此可见ae可以完成一些降维压缩特征提取等任务">由此可见，AE可以完成一些降维、压缩、特征提取等任务</h4>
@@ -833,20 +834,5 @@ decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()<
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

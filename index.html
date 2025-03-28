@@ -265,7 +265,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2025/03/27/VAE/" target="_self">
         <div>
-          1.先来看AE（自动编码器） 本质是无监督学习，主要就是一个Encoder和Decoder i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 \(g_\theta\) 表示Encoder的网络， \(z=g_\theta(x)\) 表示高维数据x经过网络之后产生低维的z ### ii.Decoder 从降维后的数据还原到原始数据,用 \(f_\lambda\) 表
+          1.先来看AE（自动编码器） 本质是无监督学习，主要就是一个Encoder和Decoder i.Encoder 将高维数据映射到低维空间，实际上起一个降维的作用,用 \(g_\theta\) 表示Encoder的网络， \(z=g_\theta(x)\) 表示高维数据x经过网络之后产生低维的z ii.Decoder 从降维后的数据还原到原始数据,用 \(f_\lambda\) 表示En
         </div>
       </a>
 
@@ -860,20 +860,5 @@
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
