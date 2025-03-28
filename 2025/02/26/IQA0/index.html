@@ -19,12 +19,12 @@
   <meta name="author" content="lsy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="IQA——图像质量评估图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义 1.图像质量评估对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价 2.分类根据有没有参与这一角度，分为主观评价和客观评价 3.主观评价方法i.绝对评价评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规">
+    <meta name="description" content="IQA——图像质量评估 图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义 ## 1.图像质量评估 对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价 ## 2.分类 根据有没有参与这一角度，分为主观评价和客观评价 ## 3.主观评价方法 ### i.绝对评价 评价指标是平均">
 <meta property="og:type" content="article">
 <meta property="og:title" content="IQA之入门必备知识">
 <meta property="og:url" content="https://fightforql.github.io/2025/02/26/IQA0/index.html">
 <meta property="og:site_name" content="lsylalala">
-<meta property="og:description" content="IQA——图像质量评估图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义 1.图像质量评估对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价 2.分类根据有没有参与这一角度，分为主观评价和客观评价 3.主观评价方法i.绝对评价评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规">
+<meta property="og:description" content="IQA——图像质量评估 图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义 ## 1.图像质量评估 对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价 ## 2.分类 根据有没有参与这一角度，分为主观评价和客观评价 ## 3.主观评价方法 ### i.绝对评价 评价指标是平均">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-02-26T05:28:00.000Z">
 <meta property="article:modified_time" content="2025-02-26T06:49:22.978Z">
@@ -318,12 +318,18 @@
             
               <div class="markdown-body">
                 
-                <h1 id="IQA——图像质量评估"><a href="#IQA——图像质量评估" class="headerlink" title="IQA——图像质量评估"></a>IQA——图像质量评估</h1><p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义</p>
-<h2 id="1-图像质量评估"><a href="#1-图像质量评估" class="headerlink" title="1.图像质量评估"></a>1.图像质量评估</h2><p>对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价</p>
-<h2 id="2-分类"><a href="#2-分类" class="headerlink" title="2.分类"></a>2.分类</h2><p>根据有没有参与这一角度，分为主观评价和客观评价</p>
-<h2 id="3-主观评价方法"><a href="#3-主观评价方法" class="headerlink" title="3.主观评价方法"></a>3.主观评价方法</h2><h3 id="i-绝对评价"><a href="#i-绝对评价" class="headerlink" title="i.绝对评价"></a>i.绝对评价</h3><p>评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值</p>
-<h3 id="ii-相对评价"><a href="#ii-相对评价" class="headerlink" title="ii.相对评价"></a>ii.相对评价</h3><p>评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值</p>
-<h2 id="4-客观评价方法"><a href="#4-客观评价方法" class="headerlink" title="4.客观评价方法"></a>4.客观评价方法</h2><p>脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.<br>分为全参考（FR）、半参考（RR）、无参考（NR）</p>
+                <h1 id="iqa图像质量评估">IQA——图像质量评估</h1>
+<p>图像质量是比较各种图像处理算法性能优劣以及优化系统参数的重要指标，因此在图像采集、编码压缩、网络传输等领域建立有效的图像质量评价机制具有重要的意义
+## 1.图像质量评估
+对图像进行评分，使用合适的评价指标，使得评价结果最符合人类主观评价 ##
+2.分类 根据有没有参与这一角度，分为主观评价和客观评价 ## 3.主观评价方法
+### i.绝对评价
+评价指标是平均主观分(MOS),将待评价图像和原始图像按一定规则交替播放持续一定时间给观察者，然后在播放后留出一定的时间间隔供观察者打分，最后将所有给出的分数取平均作为该序列的评价值，即该待评图像的评价值
+### ii.相对评价
+评价指标是差异平均主观分（DMOS）,相对评价中没有原始图像作为参考，是由观察者对一批待评价图像进行相互比较，从而判断出每个图像的优劣顺序，并给出相应的评价值
+## 4.客观评价方法
+脱离人的主观意识判断，主要通过函数拟合或者机器学习的方法来建立一个模型，对待评图像进行相关的处理运算，得到图像的评价值.
+分为全参考（FR）、半参考（RR）、无参考（NR）</p>
 
                 
               </div>
@@ -414,9 +420,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2025/03/13/GAN/" title="GAN model学习">
+                      <a href="/2025/02/26/IQA%E4%B8%AD%E7%9A%84%E5%AF%B9%E6%8A%97%E6%94%BB%E5%87%BB/" title="NR-IQA之对抗攻击方法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">GAN model学习</span>
+                        <span class="hidden-mobile">NR-IQA之对抗攻击方法</span>
                         <span class="visible-mobile">Previous</span>
                       </a>
                     
@@ -754,5 +760,20 @@
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

@@ -19,12 +19,10 @@
   <meta name="author" content="lsy">
   <meta name="keywords" content="">
   
-    <meta name="description" content="test">
-<meta property="og:type" content="website">
+    <meta property="og:type" content="website">
 <meta property="og:title" content="About">
 <meta property="og:url" content="https://fightforql.github.io/about/index.html">
 <meta property="og:site_name" content="lsylalala">
-<meta property="og:description" content="test">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-01-19T16:32:40.000Z">
 <meta property="article:modified_time" content="2025-01-19T16:33:31.126Z">
@@ -309,6 +307,7 @@
 <article class="about-content page-content mt-5">
   <div class="markdown-body">
     
+
   </div>
 
   
@@ -539,5 +538,20 @@
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
