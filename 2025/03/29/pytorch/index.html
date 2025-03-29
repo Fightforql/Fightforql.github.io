@@ -27,7 +27,7 @@
 <meta property="og:description" content="1.tensor pytorch&#x7684;tensor&#x4E0E;numpy&#x4E2D;&#x7684;&#x591A;&#x7EF4;&#x6570;&#x7EC4;&#x662F;&#x7C7B;&#x4F3C;&#x7684;&#xFF0C;&#x4E0D;&#x8FC7;&#xFF0C;Tensor&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;GPU&amp;#x">
 <meta property="og:locale" content="en_US">
 <meta property="article:published_time" content="2025-03-29T05:28:00.000Z">
-<meta property="article:modified_time" content="2025-03-29T07:49:22.173Z">
+<meta property="article:modified_time" content="2025-03-29T07:58:16.923Z">
 <meta property="article:author" content="lsy">
 <meta property="article:tag" content="pytorch">
 <meta name="twitter:card" content="summary_large_image">
@@ -249,7 +249,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.4k words
+          2.5k words
         
       </span>
     
@@ -513,7 +513,8 @@ x = torch.tensor([<span class="hljs-number">1.0</span>, <span class="hljs-number
 x_np = x.detach().numpy()  <span class="hljs-comment"># &#x274C; &#x8FD9;&#x4E2A;&#x6B65;&#x9AA4;&#x4F1A;&#x4E22;&#x5931;&#x68AF;&#x5EA6;&#x4FE1;&#x606F;</span>
 y_np = np.sin(x_np)  <span class="hljs-comment"># NumPy &#x8BA1;&#x7B97;</span>
 y = torch.tensor(y_np, dtype=torch.float32, requires_grad=<span class="hljs-literal">True</span>)  <span class="hljs-comment"># &#x8F6C;&#x56DE; tensor</span>
-y.retain_grad()  <span class="hljs-comment"># &#x4FDD;&#x7559; y &#x7684;&#x68AF;&#x5EA6;</span>
+<span class="hljs-comment">#y.retain_grad()  # &#x4FDD;&#x7559; y &#x7684;&#x68AF;&#x5EA6;</span>
+<span class="hljs-comment">#&#x8FD9;&#x4E00;&#x6B65;&#x662F;&#x56E0;&#x4E3A;&#x975E;&#x53F6;&#x5B50;&#x5F20;&#x91CF;(&#x8FD9;&#x91CC;&#x7684;&#x53F6;&#x5B50;&#x5F20;&#x91CF;&#x662F;x)&#x9ED8;&#x8BA4;&#x4E0D;&#x4FDD;&#x5B58;&#x68AF;&#x5EA6;&#xFF0C;&#x6240;&#x4EE5;&#x9700;&#x8981;&#x8FD9;&#x4E00;&#x6B65;&#x6765;&#x4FDD;&#x5B58;y&#x7684;&#x68AF;&#x5EA6;</span>
 
 <span class="hljs-comment"># 3. &#x8BA1;&#x7B97;&#x68AF;&#x5EA6;</span>
 y.<span class="hljs-built_in">sum</span>().backward()  <span class="hljs-comment"># &#x53CD;&#x5411;&#x4F20;&#x64AD;</span>
@@ -522,6 +523,7 @@ y.<span class="hljs-built_in">sum</span>().backward()  <span class="hljs-comment
 x.grad = y.grad * torch.cos(x)  <span class="hljs-comment"># &#x56E0;&#x4E3A; y = sin(x)&#xFF0C;&#x6240;&#x4EE5; dy/dx = cos(x)</span>
 
 <span class="hljs-built_in">print</span>(x.grad)  <span class="hljs-comment"># &#x2705; &#x4ECD;&#x7136;&#x6B63;&#x786E;&#x8BA1;&#x7B97;&#x51FA;&#x68AF;&#x5EA6;</span></code></pre></div>
+<p>&#x53EF;&#x89C1;&#x8981;&#x4E48;&#x5199;&#x4E00;&#x4E2A;&#x5F20;&#x91CF;&#x53EF;&#x4EE5;&#x7528;&#x7684;forward&#x51FD;&#x6570;&#xFF0C;&#x8981;&#x4E48;&#x8981;&#x81EA;&#x5DF1;&#x624B;&#x52A8;&#x8BA1;&#x7B97;forward&#x8FC7;&#x7A0B;&#x4E2D;&#x7684;&#x68AF;&#x5EA6;</p>
 <h1 id="3&#x4EE3;&#x7801;&#x793A;&#x4F8B;"><a class="markdownIt-Anchor" href="#3&#x4EE3;&#x7801;&#x793A;&#x4F8B;"></a> 3.&#x4EE3;&#x7801;&#x793A;&#x4F8B;</h1>
 <p><strong>&#x4EE5;&#x6211;&#x5728;&#x89D2;&#x8272;&#x52A8;&#x753B;&#x8FD9;&#x95E8;&#x8BFE;&#x4E0A;&#x7684;lab1&#x4E3A;&#x4F8B;&#xFF0C;lab1&#x7684;part2&#x662F;&#x9700;&#x8981;&#x5B9E;&#x73B0;&#x4E00;&#x4E2A;IK&#x7B97;&#x6CD5;&#xFF0C;&#x7531;&#x4E8E;IK&#x672C;&#x8EAB;&#x4E5F;&#x662F;&#x4E00;&#x79CD;&#x4F18;&#x5316;&#x95EE;&#x9898;&#xFF0C;&#x53EF;&#x4EE5;&#x57FA;&#x4E8E;&#x68AF;&#x5EA6;&#x4E0B;&#x964D;&#x6765;&#x5B9E;&#x73B0;&#xFF0C;&#x8FD9;&#x91CC;&#x6211;&#x4EEC;&#x4E0D;&#x59A8;&#x7528;ptorch&#x6846;&#x67B6;&#x6765;&#x5B9E;&#x73B0;</strong></p>
 
@@ -948,5 +950,20 @@ x.grad = y.grad * torch.cos(x)  <span class="hljs-comment"># &#x56E0;&#x4E3A; y 
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
