@@ -522,27 +522,40 @@ decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()<
   
     <article id="comments" lazyload>
       
-  <div id="valine"></div>
-  <script type="text/javascript">
-    Fluid.utils.loadComments('#valine', function() {
-      Fluid.utils.createScript('https://lib.baomitu.com/valine/1.5.1/Valine.min.js', function() {
-        var options = Object.assign(
-          {"appId":"doUjNNviuPNgSeDJTqsNeqgE-gzGzoHsz","appKey":"d89mqZWRvfzLrovrowKnmaUf","path":"window.location.pathname","placeholder":"虽然是很烂的评论系统，但欢迎您在这里与我交流~","avatar":"retro","meta":["nick","mail","link"],"requiredFields":[],"pageSize":10,"lang":"zh-CN","highlight":true,"recordIP":true,"serverURLs":"https://doujnnvi.lc-cn-n1-shared.com","emojiCDN":null,"emojiMaps":null,"enableQQ":false},
-          {
-            el: "#valine",
-            path: window.location.pathname
+    <div id="giscus" class="giscus"></div>
+    <script type="text/javascript">
+      Fluid.utils.loadComments('#giscus', function() {
+        var options = {"repo":"Fightforql/discussion","repo-id":"R_kgDOORa0MA","category":"Announcements","category-id":"DIC_kwDOORa0MM4CooKi","theme-light":"light","theme-dark":"dark","mapping":"pathname","reactions-enabled":1,"emit-metadata":0,"input-position":"top","lang":"zh-CN"};
+        var attributes = {};
+        for (let option in options) {
+          if (!option.startsWith('theme-')) {
+            var key = option.startsWith('data-') ? option : 'data-' + option;
+            attributes[key] = options[option];
           }
-        )
-        new Valine(options);
-        Fluid.utils.waitElementVisible('#valine .vcontent', () => {
-          var imgSelector = '#valine .vcontent img:not(.vemoji)';
-          Fluid.plugins.imageCaption(imgSelector);
-          Fluid.plugins.fancyBox(imgSelector);
-        })
+        }
+        var light = 'light';
+        var dark = 'dark';
+        window.GiscusThemeLight = light;
+        window.GiscusThemeDark = dark;
+        attributes['data-theme'] = document.documentElement.getAttribute('data-user-color-scheme') === 'dark' ? dark : light;
+        for (let attribute in attributes) {
+          var value = attributes[attribute];
+          if (value === undefined || value === null || value === '') {
+            delete attributes[attribute];
+          }
+        }
+        var s = document.createElement('script');
+        s.setAttribute('src', 'https://giscus.app/client.js');
+        s.setAttribute('crossorigin', 'anonymous');
+        for (let attribute in attributes) {
+          s.setAttribute(attribute, attributes[attribute]);
+        }
+        var ss = document.getElementsByTagName('script');
+        var e = ss.length > 0 ? ss[ss.length - 1] : document.head || document.documentElement;
+        e.parentNode.insertBefore(s, e.nextSibling);
       });
-    });
-  </script>
-  <noscript>Please enable JavaScript to view the comments</noscript>
+    </script>
+    <noscript>Please enable JavaScript to view the comments</noscript>
 
 
     </article>
@@ -836,5 +849,20 @@ decoded_data = autoencoder.decoder(torch.tensor(encoded_data)).detach().numpy()<
   <noscript>
     <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
