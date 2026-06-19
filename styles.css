@@ -1,5 +1,5 @@
 :root {
-  --bg: #f7f8f5;
+  --bg: #ffffff;
   --paper: #ffffff;
   --ink: #1d2326;
   --muted: #5d6569;
@@ -60,7 +60,7 @@ img {
   position: sticky;
   top: 0;
   z-index: 5;
-  background: rgba(247, 248, 245, 0.93);
+  background: rgba(255, 255, 255, 0.94);
   border-bottom: 1px solid var(--line);
   backdrop-filter: blur(10px);
 }
@@ -198,46 +198,7 @@ img {
 }
 
 .publication {
-  display: grid;
-  grid-template-columns: 128px minmax(0, 1fr);
-  gap: 1rem;
-  align-items: stretch;
-  padding: 0.85rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-}
-
-.publication-badge {
-  display: grid;
-  align-content: center;
-  justify-items: center;
-  min-height: 128px;
-  padding: 0.75rem;
-  background: #eef4ef;
-  border: 1px solid var(--line);
-  border-radius: 6px;
-  color: var(--accent);
-  text-align: center;
-}
-
-.publication-badge span {
-  font-size: 1rem;
-  font-weight: 760;
-}
-
-.publication-badge strong {
-  display: block;
-  margin-top: 0.15rem;
-  color: var(--ink);
-  font-size: 1.65rem;
-  line-height: 1;
-}
-
-.publication-badge small {
-  margin-top: 0.4rem;
-  color: var(--accent-2);
-  font-weight: 720;
+  padding: 0.15rem 0 0.4rem;
 }
 
 .pub-year {
@@ -290,21 +251,6 @@ img {
   color: var(--muted);
 }
 
-.project {
-  padding: 1rem;
-  background: var(--paper);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-}
-
-.project span {
-  display: inline-block;
-  margin-top: 0.65rem;
-  color: var(--accent);
-  font-size: 0.9rem;
-  font-weight: 720;
-}
-
 .award-list {
   margin: 0;
   padding-left: 1.15rem;
@@ -351,10 +297,6 @@ img {
   .publication,
   .timeline-item {
     grid-template-columns: 1fr;
-  }
-
-  .publication-badge {
-    min-height: 6.5rem;
   }
 
   .timeline-item time {
