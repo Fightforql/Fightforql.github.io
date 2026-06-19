@@ -209,8 +209,7 @@ img {
 }
 
 .authors,
-.venue,
-.pub-summary {
+.venue {
   color: var(--muted);
 }
 
