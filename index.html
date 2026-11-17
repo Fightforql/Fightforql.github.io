@@ -3,118 +3,94 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Personal academic homepage of Shuyi Liang, an undergraduate student in Computer Science at Peking University."
-    />
-    <title>Shuyi Liang</title>
+    <meta name="description" content="Shuyi Liang — Computer Science undergraduate at Peking University, exploring computer vision and generative AI." />
+    <meta name="theme-color" content="#f8f7f3" />
+    <title>Shuyi Liang · Peking University</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
-
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
-        <a class="brand" href="#about">Shuyi Liang</a>
+        <a class="brand" href="#about" aria-label="Shuyi Liang — home">sl<span aria-hidden="true">.</span></a>
         <div class="nav-links">
+          <a href="#publications">Research</a>
           <a href="#education">Education</a>
-          <a href="#publications">Publications</a>
           <a href="#awards">Awards</a>
+          <a class="nav-contact" href="mailto:2300013147@stu.pku.edu.cn">Say hello <span aria-hidden="true">↗</span></a>
         </div>
       </nav>
     </header>
 
     <main id="main" class="page">
-      <div class="content">
-        <section id="about" class="section intro">
-          <div class="about-grid">
-            <div>
-              <p class="eyebrow">Peking University - Computer Vision - Generative AI</p>
-              <h1>Shuyi Liang</h1>
-              <p class="role">Undergraduate Student - Computer Science and Technology</p>
-              <p>
-                I am a junior undergraduate student majoring in Computer Science and
-                Technology at Peking University. My research interests center on
-                generative AI, including image generation and video generation, and I
-                hope to further explore world models in future research.
-              </p>
-              <p>
-                I previously worked as a research intern at the Camera Intelligence Lab,
-                advised by Prof. Boxin Shi. I am currently seeking new research
-                internship opportunities.
-              </p>
-              <p>
-                <a href="assets/LiangShuyi_CV.pdf" target="_blank" rel="noopener">Click here to view my CV.</a>
-              </p>
-              <div class="profile-links" aria-label="Contact links">
-                <a href="mailto:2300013147@stu.pku.edu.cn">Email</a>
-                <a href="https://github.com/Fightforql">GitHub</a>
-              </div>
-            </div>
-            <img class="portrait" src="assets/images/profile.jpg" alt="Portrait of Shuyi Liang" />
+      <section id="about" class="intro" aria-labelledby="intro-title">
+        <div class="intro-copy">
+          <p class="eyebrow">Computer Science · Peking University</p>
+          <h1 id="intro-title">Shuyi Liang<span class="name-dot">.</span></h1>
+          <p class="intro-lead">Exploring visual intelligence<br />and generative worlds.</p>
+          <div class="bio">
+            <p>I am a senior undergraduate student in Computer Science and Technology at Peking University. My research interests center on <strong>generative AI</strong>, including image and video generation, with a growing interest in world models.</p>
+            <p>I previously worked as a research intern at the Camera Intelligence Lab, advised by Prof. Boxin Shi.</p>
           </div>
-        </section>
-
-        <section id="education" class="section">
-          <div class="section-heading">
-            <h2>Education</h2>
+          <div class="profile-links" aria-label="Contact and profile links">
+            <a class="cv-link" href="assets/LiangShuyi_CV.pdf" target="_blank" rel="noopener">Curriculum vitae <span aria-hidden="true">↗</span></a>
+            <a href="mailto:2300013147@stu.pku.edu.cn">Email <span aria-hidden="true">↗</span></a>
+            <a href="https://github.com/Fightforql">GitHub <span aria-hidden="true">↗</span></a>
           </div>
-          <article class="timeline-item">
-            <div>
-              <h3>Peking University</h3>
-              <p>B.S. in Computer Science and Technology</p>
-              <p class="muted">
-                Selected coursework: Large Language Models, Introduction to Artificial
-                Intelligence, Computational Photography, Natural Language Processing,
-                Introduction to Computer Vision.
-              </p>
-            </div>
-            <time>2023 - Present</time>
-          </article>
-        </section>
+          <p class="availability"><span aria-hidden="true"></span>Open to research internship opportunities</p>
+        </div>
+        <figure class="portrait-frame">
+          <a class="portrait-link" href="assets/images/profile.jpg" target="_blank" rel="noopener" aria-label="View full photo of Shuyi Liang">
+            <img class="portrait" src="assets/images/profile.jpg" alt="Shuyi Liang enjoying an egg waffle on a walk in Macau" width="1279" height="1684" fetchpriority="high" />
+          </a>
+          <figcaption><span>A little beyond research</span><span aria-hidden="true">↗</span></figcaption>
+        </figure>
+      </section>
 
-        <section id="publications" class="section">
-          <div class="section-heading">
-            <h2>Selected Publications</h2>
-            <p>* denotes equal contribution.</p>
-          </div>
-
+      <section id="publications" class="section" aria-labelledby="research-title">
+        <div class="section-label"><span class="section-number" aria-hidden="true">01 /</span><h2 id="research-title">Selected<br class="desktop-break" /> research</h2></div>
+        <div class="section-content">
           <article class="publication">
-            <div class="publication-body">
-              <p class="pub-year">2026</p>
-              <h3>SLAIR: Structured Latent Flow Matching for All-in-One Image Restoration</h3>
-              <p class="authors">
-                <strong>Shuyi Liang*</strong>, <strong>Yixin Yang*</strong>, Hanyue Lou,
-                Yuning Cui, Boxin Shi
-              </p>
-              <p class="venue">European Conference on Computer Vision (ECCV), 2026. Accepted.</p>
-              <div class="pub-links">
-                <span>paper coming soon</span>
-                <span>code coming soon</span>
-              </div>
+            <div class="pub-meta"><span class="venue-tag">ECCV 2026</span><span class="accepted">Accepted</span></div>
+            <h3>SLAIR: Structured Latent Flow Matching for All-in-One Image Restoration</h3>
+            <p class="authors"><strong>Shuyi Liang*</strong>, Yixin Yang*, Hanyue Lou, Yuning Cui, Boxin Shi</p>
+            <p class="venue">European Conference on Computer Vision, 2026</p>
+            <div class="pub-links" aria-label="Publication resources">
+              <a href="https://media.eventhosts.cc/Conferences/ECCV2026/pdfs/5798.pdf" target="_blank" rel="noopener">Paper <span class="link-format">PDF</span> <span aria-hidden="true">↗</span></a>
+              <a href="https://github.com/Fightforql/SLAIR" target="_blank" rel="noopener">Code <span aria-hidden="true">↗</span></a>
             </div>
           </article>
-        </section>
+          <p class="contribution-note">* Equal contribution</p>
+        </div>
+      </section>
 
-        <section id="awards" class="section">
-          <div class="section-heading">
-            <h2>Honors &amp; Awards</h2>
-          </div>
+      <section id="education" class="section" aria-labelledby="education-title">
+        <div class="section-label"><span class="section-number" aria-hidden="true">02 /</span><h2 id="education-title">Education</h2></div>
+        <div class="section-content">
+          <article class="education-entry">
+            <div class="entry-heading"><h3>Peking University</h3><span class="date">2023 — Present</span></div>
+            <p class="degree">B.S. in Computer Science and Technology</p>
+            <p class="course-label">Selected coursework</p>
+            <p class="coursework">Large Language Models · Introduction to Artificial Intelligence · Computational Photography · Natural Language Processing · Introduction to Computer Vision</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="awards" class="section" aria-labelledby="awards-title">
+        <div class="section-label"><span class="section-number" aria-hidden="true">03 /</span><h2 id="awards-title">Honors<br class="desktop-break" /> &amp; awards</h2></div>
+        <div class="section-content">
           <ul class="award-list">
-            <li>Honorable Mention, Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling, 2026</li>
-            <li>First Prize, 34th Challenge Cup May Fourth Youth Science Award, Peking University, 2026</li>
-            <li>Outstanding Research Award &amp; Tianchuang Scholarship, Peking University, 2024-2025</li>
-            <li>Third Prize, 22nd Castle Cup Programming Contest, Peking University, 2024</li>
-            <li>Academic Excellence Award, Peking University, 2023-2024</li>
+            <li><span class="date">2026</span><div><h3>Honorable Mention</h3><p>Mathematical Contest in Modeling / Interdisciplinary Contest in Modeling</p></div></li>
+            <li><span class="date">2026</span><div><h3>First Prize · Challenge Cup</h3><p>34th Challenge Cup May Fourth Youth Science Award, Peking University</p></div></li>
+            <li><span class="date">2024–25</span><div><h3>Outstanding Research Award &amp; Tianchuang Scholarship</h3><p>Peking University</p></div></li>
+            <li><span class="date">2024</span><div><h3>Third Prize · Castle Cup</h3><p>22nd Castle Cup Programming Contest, Peking University</p></div></li>
+            <li><span class="date">2023–24</span><div><h3>Academic Excellence Award</h3><p>Peking University</p></div></li>
           </ul>
-        </section>
-
-      </div>
+        </div>
+      </section>
     </main>
 
-    <footer class="footer">
-      <span>(c) 2026 Shuyi Liang.</span>
-      <span>Last updated: June 2026.</span>
-    </footer>
+    <footer class="footer"><span>© 2026 Shuyi Liang</span><span>Last updated · November 2026</span><a href="#about">Back to top <span aria-hidden="true">↑</span></a></footer>
   </body>
 </html>
